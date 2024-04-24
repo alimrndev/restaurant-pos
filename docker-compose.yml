@@ -12,6 +12,8 @@ services:
       - "5435:5432"  # Mengubah port eksternal menjadi 5435
     volumes:
       - postgres_restaurant_data:/var/lib/postgresql/data
+      - ./db/database-schema.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./db/seeder.sql:/docker-entrypoint-initdb.d/02-seeder.sql
 
 volumes:
   postgres_restaurant_data:
