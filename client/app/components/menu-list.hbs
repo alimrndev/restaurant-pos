@@ -1,0 +1,38 @@
+<a class="list-group-item list-group-item-action">
+    <div class="row">
+        <div class="col-6">
+        {{!-- Product --}}
+        <h5 class="text-primary">{{@name}}</h5>
+        <p class="text-primary">{{@description}}</p>
+        <p class="text-primary font-weight-bold">Rp {{currency @price}}</p>
+        </div>
+
+        <div class="col-6 text-center">
+        {{!-- Image --}}
+        <section>
+            <img class="" src="{{@picture}}" style="width: 75px; height: 75px; object-fit: cover; border-radius:10%">
+        </section>
+        {{!-- Counter Qty --}}
+        <section class="d-flex justify-content-center align-items-center mt-3">
+            {{#if this.isQtyZero }}
+                <div class="d-grid gap-2">
+                <button class="btn btn-sm btn-primary fa-beat" style="--fa-beat-scale: 1.2; --fa-animation-duration: 2s;" type="submit" {{on "click" this.addToCart}}>
+                    <i class="fa-solid fa-cart-shopping" ></i> 
+                    Add Now
+                </button>
+                </div>
+            {{else}}
+                {{#if this.isDeleted }}
+                <button class="btn btn-primary btn-sm me-3" type="button" {{on "click" this.subToCart}}><i class="fa-solid fa-trash"></i></button>
+                {{else}}
+                <button class="btn btn-primary btn-sm me-3" type="button" {{on "click" this.subToCart}}><i class="fa-solid fa-minus"></i></button>
+                {{/if}}
+                <h3 class="align-self-center text-black">{{this.qtyCount}}</h3>  
+                <button class="btn btn-primary btn-sm ms-3 fa-beat" style="--fa-beat-scale: 1.2; --fa-animation-duration: 2s;" type="button" {{on "click" this.addToCart}}>
+                <i class="fa-solid fa-plus"></i>
+                </button>
+            {{/if}}
+        </section>
+        </div>
+    </div>
+</a>

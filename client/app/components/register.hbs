@@ -1,0 +1,50 @@
+<div class="login-container">
+  <div class="login-card" style="border-radius: 10px;">
+    <p class="login-title text-center">Register</p>
+    <form class="login-form" style="border-radius: 10px;">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email" required style="border-radius: 5px;">
+      </div>
+      <div class="form-group">
+        <label for="fullname">Fullname</label>
+        <input type="text" class="form-control" id="fullname" placeholder="Enter your fullname" required style="border-radius: 5px;">
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter your username" required style="border-radius: 5px;">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group" style="border-radius: 10px;">
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required style="border-radius: 5px;">
+          <div class="input-group-append">
+            <button class="btn btn-sm btn-outline-secondary" type="button" id="togglePassword" title="Show Password" style="border-radius: 5px;">
+              <span class="fa fa-eye" style="border-radius: 5px;"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary login-button" style="border-radius: 5px;">Register</button>
+      <div class="login-links">
+        <p>Already have an account? <LinkTo @route="login" class="create-account">Login Now</LinkTo></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.getElementById('togglePassword').addEventListener('click', function (e) {
+    var passwordInput = document.getElementById('password');
+    var toggleIcon = this.querySelector('span');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleIcon.classList.remove('fa-eye');
+      toggleIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.classList.remove('fa-eye-slash');
+      toggleIcon.classList.add('fa-eye');
+    }
+  });
+</script>

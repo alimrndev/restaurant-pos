@@ -1,0 +1,72 @@
+{{page-title "Order - Restaurant"}}
+
+{{!-- Navbar Top --}}
+<Navbar @isOrder="true" />
+
+{{!-- List Order --}}
+<div class="container">
+    <section class="mt-3 mb-3">
+        
+    {{!-- Customer Info --}}
+    <Customer/>
+    
+    {{!-- Start List Menu --}}
+    <div class="progress mt-3">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+    </div>
+
+    {{!-- If Empty --}}
+    {{#if this.isEmpty }}
+    <div class="row text-center mt-5 mb-5">
+        <h3 class="align-self-center">Add Your Menu!</h3>
+        <LinkTo @route="menu">
+          <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit">
+            <i class="fa-solid fa-utensils"></i> Menu
+          </button>
+        </LinkTo>
+    </div>
+    {{/if}}
+
+    {{!-- List Menu --}}
+    <div class="list-group">
+      {{#each this.cart.itemList as |item|}}
+        <MenuList 
+          @picture={{item.picture}}
+          @name={{item.name}}
+          @description={{item.description}}
+          @price={{item.price}}
+          @qty={{item.count}}
+        />
+      {{/each}}
+    </div> 
+    
+    {{!-- End List Menu --}}
+    <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+    </div>
+    
+    {{#unless this.isEmpty }}
+    <div class="row text-center mt-5 mb-5">
+        <h3 class="align-self-center">Add Some Menu?</h3>
+        <LinkTo @route="menu">
+        <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit">
+            <i class="fa-solid fa-utensils"></i> Menu
+        </button>
+        </LinkTo>
+    </div>
+    {{/unless}}
+
+    </section>
+</div>
+
+{{!-- Spacer Bottom --}}
+<div class="spacer-bottom"></div>
+
+{{!-- Navbar Bottom --}}
+<NavbarBottom 
+  @isOrder="true"
+  @qty={{this.qty}} 
+  @subtotal={{this.subtotal}} 
+  @tax={{this.tax}} 
+  @total={{this.total}} 
+/>

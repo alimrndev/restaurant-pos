@@ -1,0 +1,93 @@
+{{!-- Accordion Invoice --}}
+{{#if this.cart.itemList.length}}
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#{{ @orderNumber }}" aria-expanded="false" aria-controls={{@orderNumber}}>
+                    <div class="d-flex w-100 justify-content-between ms-3 me-3">
+                        <section class="mb-1">
+                            <section class="mb-3">{{@orderNumber}}</section>
+                            <section>Qty {{this.qty}} | Total Price: Rp {{currency this.total}}</section>
+                        </section>
+                        <section class="text-dark font-weight-bold">
+                            <section class="mb-3 text-center"><small>17 Feb 2024 08:00</small></section>
+                            <section class="mb-3 text-center"><span class="badge rounded-pill bg-{{this.bgColor}}" style="padding: 10px;">{{@status}}</span></section>
+                        </section>
+                    </div>
+                </button>
+            </h2>
+            <div class="accordion-collapse collapse" id="{{@orderNumber}}" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+
+                <div class="accordion-body">
+                    <div class="d-grid gap-2 text-center mb-3 mt-3">
+                        <h3>Status</h3>
+                        <button class="btn btn-lg btn-{{this.bgColor}}" type="submit">
+                            <h5 class="text-white">{{@status}}</h5>
+                        </button>
+                    </div>
+                    {{!-- Start List Menu --}}
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                    </div> 
+                    {{!-- List Invoice --}}
+                    <div class="list-group">
+                        {{!-- Order Number --}}
+                        <a class="list-group-item list-group-item-action flex-column align-items-start">
+                            <p class="mb-1">Order Number: <h5>{{@orderNumber}}</h5></p>
+                            <p class="mb-1">Customer: <h5>{{@customer}}</h5></p>
+                            <p class="mb-1">PIC Manager: <h5>{{@manager}}</h5></p>
+                        </a>
+                        {{#each @itemList as |item|}}
+                            <a class="list-group-item list-group-item-action flex-column align-items-start">
+                                <h5 class="mb-1">{{item.name}}</h5>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">Qty {{item.count}} x Rp {{currency item.price}}</p>
+                                    <p class="mb-1">Rp {{currency item.subtotal}}</p>
+                                </div>
+                            </a>
+                        {{/each}}
+                       
+                        <a class="list-group-item list-group-item-action flex-column align-items-start active">
+                            <div class="d-flex w-100 justify-content-between">
+                                <p class="mb-1">Sub Total</p>
+                                <p class="mb-1">Rp {{currency this.subtotal}}</p>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <p class="mb-1">Tax</p>
+                                <p class="mb-1">Rp {{currency this.tax}}</p>
+                            </div>
+                            <div class="d-flex w-100 justify-content-between">
+                                <p class="mb-1">Total Price</p>
+                                <h4 class="mb-1">Rp {{currency this.total}}</h4>
+                            </div>
+                        </a>
+
+                        {{!-- Payment Method --}}
+                        {{#if this.isPay}}
+                        <a class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="align-items-center text-center">
+                                <h1 class="mt-3">Payment Method</h1>
+                                <button class="btn btn-info align-self-center text-center mb-3 mt-3" type="button">
+                                    <h5 class="align-self-center">Cashier</h5>
+                                </button>
+                                <h1 class="mb-3 mt-3">Or</h1>
+                                <button class="btn btn-info mb-2" type="button">
+                                    <h5 class="mb-2">Transfer Bank Mandiri</h5>
+                                    <h5 class="mb-2">1122334455</h5>
+                                    <h5 class="mb-2">A.N. Muhammad Ali Imron</h5>
+                                </button>
+                            </div>
+                        </a>
+                        {{/if}}
+
+                        {{!-- End List Menu --}}
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

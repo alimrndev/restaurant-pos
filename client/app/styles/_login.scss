@@ -1,0 +1,49 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+.login-card {
+  width: 350px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.login-logo {
+  margin-bottom: 20px;
+}
+.login-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.login-links {
+  margin-top: 20px;
+}
+.create-account {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.create-account:hover {
+  text-decoration: underline;
+}

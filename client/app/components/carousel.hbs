@@ -1,0 +1,33 @@
+<div class="container-fluid float-container" style="padding: 0;">
+  <div id="promotionCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/c1.jpg?alt=media&token=3a6d78cf-3c24-4927-9d0b-1d9156a73189" class="d-block w-100" alt="Promosi 1" style="height: 30rem; object-fit: cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/c2.jpg?alt=media&token=904d547c-77f1-427b-aa88-c0304a39517c" class="d-block w-100" alt="Promosi 2" style="height: 30rem; object-fit: cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/c3.jpg?alt=media&token=8345859b-3e39-44fe-a7f9-e47ce83c2c3b" class="d-block w-100" alt="Promosi 3" style="height: 30rem; object-fit: cover;">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#promotionCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Sebelumnya</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#promotionCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Selanjutnya</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  var myCarousel = document.querySelector('#promotionCarousel')
+  var carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 2000,
+    wrap: true,
+    ride: 'carousel'
+  })
+</script>
+

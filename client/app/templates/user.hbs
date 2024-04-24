@@ -1,0 +1,19 @@
+{{page-title "User - Restaurant"}}
+
+{{!-- Navbar Top --}}
+<Navbar @isUser="true" />
+
+<div class="container mt-5 mb-5">
+  {{!-- Customer Info --}}
+  <Customer/>
+
+  {{!-- Profile --}}
+  <Profile/>
+
+  {{!-- Spacer Bottom --}}
+  <div class="spacer-bottom"></div>
+
+</div>
+
+{{!-- Navbar Bottom --}}
+<NavbarBottom @isHome="true"/>

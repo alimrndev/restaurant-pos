@@ -1,0 +1,135 @@
+{{#if @isHome}}
+<nav class="navbar bg-light fixed-bottom" data-bs-theme="light" style="padding-bottom: 2px; padding-top: 2px;">
+  <div class="container">
+    <section class="text-center"><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h4 class="hover-icon"><i class="fa-solid fa-utensils"></i><br></h4>Menu</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="order"><button class="btn btn-sm btn-white" type="button"><h4><i class="fa-solid fa-shopping-cart"></i><br></h4>Order</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="invoice"><button class="btn btn-sm btn-white" type="button"><h4><i class="fa-solid fa-money-bill-wave"></i><br></h4>Invoice</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="history"><button class="btn btn-sm btn-white" type="button"><h4><i class="fa-solid fa-book-open"></i><br></h4>History</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="user"><button class="btn btn-sm btn-white" type="button"><h4 class="hover-icon"><i class="fa-solid fa-user"></i><br></h4>Profile</button></LinkTo></section>
+  </div>
+</nav>
+<div class="spacer" style="margin-top: 4rem;"></div>
+{{/if}}
+
+{{#if @isMenu}}
+{{#if this.cart.itemList.length}}
+{{!-- Mode Web Tablet - Item List --}}
+<nav class="navbar bg-light mode-web-tablet fixed-bottom" data-bs-theme="light" style="padding-bottom: 10px; padding-top: 15px;">
+  <div class="container text-center">
+    <section>Qty<br><h3>{{@qty}}</h3></section>
+    <section>Subtotal<br><h3>Rp {{currency @subtotal}}</h3></section>
+    <LinkTo @route="order">
+      <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit"><i class="fa-solid fa-cart-shopping" ></i> Order Now</button>
+    </LinkTo>
+  </div>
+</nav>
+<div class="spacer" style="margin-top: 4rem;"></div>
+
+{{!-- Mode Mobile - Item List --}}
+<div class="card bg-light mode-mobile fixed-bottom" style="padding-top: 2px; padding-bottom: 2px;">
+  <div class="container-fluid">
+    <LinkTo @route="order">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit">
+          <div class="row text-center">
+            <section class="col-2"><small>Qty</small><br>{{@qty}}</section>
+            <section class="col-5"><small>Subtotal<br> Rp</small> {{currency @subtotal}}</section>
+            <section class="col-5 align-self-center"><i class="fa-solid fa-cart-shopping"></i> Order Now</section>
+          </div>
+        </button>
+      </div>
+    </LinkTo>
+  </div>
+</div>
+<div class="spacer" style="margin-top: 4rem;"></div>
+{{/if}}
+{{/if}}
+
+{{#if @isOrder}}
+{{#if this.cart.itemList.length}}
+{{!-- Web Tablet Mode --}}
+<nav class="navbar bg-light mode-web-tablet fixed-bottom" data-bs-theme="light"  style="padding-bottom: 10px; padding-top: 15px;">
+  <div class="container text-center">
+    <section>Qty<br><h6>{{@qty}}</h6></section>
+    <section>Subtotal<br><h6>Rp {{currency @subtotal}}</h6></section>
+    <section>Tax<br><h6>Rp {{currency @tax}}</h6></section>
+    <section>Total Price<br><h3>Rp {{currency @total}}</h3></section>
+    {{!-- <LinkTo @route="invoice"> --}}
+      <button class="btn btn-primary fa-beat" {{on "click" this.showModal}} style="--fa-beat-scale: 1.2; --fa-animation-duration: 3s;" type="submit" data-toggle="modal" data-target="#confirmationModal">
+        <i class="fa-solid fa-money-bill-wave" ></i>
+        Pay Now
+      </button>
+    {{!-- </LinkTo> --}}
+  </div>
+</nav>
+<div class="spacer" style="margin-top: 4rem;"></div>
+
+{{!-- Mobile Mode --}}
+<div class="card bg-light mode-mobile fixed-bottom" style="padding-top: 2px; padding-bottom: 2px;">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <section class="col-4 text-center"><small>Subtotal</small><br>Rp {{currency @subtotal}}</section>
+      <section class="col-4 text-center"><small>Tax</small><br>Rp {{currency @tax}}</section>
+      <section class="col-4"></section>
+    </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary fa-beat"  {{on "click" this.showModal}} style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit"  data-toggle="modal" data-target="#confirmationModal">
+          <div class="row">
+            <section class="col-4 text-center"><small>Qty</small><br>{{@qty}}</section>
+            <section class="col-4 text-center"><small>Total Price<br> Rp</small> {{currency @total}}</section>
+            <section class="col-4 align-self-center">
+              <i class="fa-solid fa-money-bill-wave" ></i>
+              Pay Now
+            </section>
+          </div>
+        </button>
+      </div>
+  </div>
+</div>
+<div class="spacer" style="margin-top: 4rem;"></div>
+
+{{!-- Modal Confirmation --}}
+<div class="modal" id="confirmationModal" style="display: {{this.display}}; backdrop-filter: blur(5px);" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Are You Sure?</h5>
+        <button type="button" class="btn-close" {{on "click" this.hideModal}} data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <section class="col-12">Are you sure you want to proceed with the payment?</section>
+        </div>
+        <div class="row">
+          <section class="col-12 text-center mt-3">Total Price</section>
+        </div>
+        <div class="row">
+          <section class="col-12 text-center"><h5>Rp {{currency @total}}</h5></section>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" {{on "click" this.hideModal}} data-bs-dismiss="modal">Close</button>
+        <LinkTo @route="invoice">
+          <button type="button" class="btn btn-primary">Proceed Payment</button>
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/if}}
+
+
+{{#if @isUser}}
+<nav class="navbar bg-light fixed-bottom" data-bs-theme="light" style="padding-bottom: 2px; padding-top: 2px;">
+  <div class="container">
+    <section class="text-center"><LinkTo @route="invoice"><button class="btn btn-sm btn-white" type="button"><h4><i class="fa-solid fa-money-bill-wave"></i><br></h4>Invoice</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="history"><button class="btn btn-sm btn-white" type="button"><h4><i class="fa-solid fa-book-open"></i><br></h4>History</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="user"><button class="btn btn-sm btn-white" type="button"><h4 class="hover-icon"><i class="fa-solid fa-user"></i><br></h4>Profile</button></LinkTo></section>
+  </div>
+</nav>
+<div class="spacer" style="margin-top: 4rem;"></div>
+{{/if}}
+

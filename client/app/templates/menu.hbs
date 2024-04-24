@@ -1,0 +1,176 @@
+{{page-title "Menu - Restaurant"}}
+{{!-- Navbar Top --}}
+<Navbar @isMenu="true" />
+
+{{!-- List Menu --}}
+<div class="container">
+  <section class="mt-3 mb-3">
+    <div class="accordion" id="menu">
+      {{!-- Package --}}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="package">
+          <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <h4>Package</h4>
+          </button>
+        </h2>
+        <div class="accordion-collapse collapse show" id="collapseOne" aria-labelledby="package" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            {{!-- Mode Web Tablet --}}
+            <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Package">
+              {{#each this.menuPackage as |menu|}}
+                <MenuCard
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                @qty={{menu.count}}
+                />
+              {{/each}}
+            </div>
+
+            {{!-- Mode Mobile --}}
+            <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Package">
+              {{#each this.menuPackage as |menu|}}
+                <MenuList
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                />
+              {{/each}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {{!-- Foods --}}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="foods">
+          <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h4>Foods</h4>
+          </button>
+        </h2>
+        <div class="accordion-collapse collapse show" id="collapseTwo" aria-labelledby="foods" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            {{!-- Mode Web Tablet --}}
+            <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Foods">
+              {{#each this.menuFoods as |menu|}}
+                <MenuCard
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                @qty={{menu.count}}
+                />
+              {{/each}}
+            </div>
+
+            {{!-- Mode Mobile --}}
+            <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Foods">
+              {{#each this.menuFoods as |menu|}}
+                <MenuList
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                />
+              {{/each}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {{!-- Drinks --}}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="drinks">
+          <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h4>Drinks</h4>
+          </button>
+        </h2>
+        <div class="accordion-collapse collapse show" id="collapseThree" aria-labelledby="drinks" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            {{!-- Mode Web Tablet --}}
+            <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Drinks">
+              {{#each this.menuDrinks as |menu|}}
+                <MenuCard
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                @qty={{menu.count}}
+                />
+              {{/each}}
+            </div>
+
+            {{!-- Mode Mobile --}}
+            <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Drinks">
+              {{#each this.menuDrinks as |menu|}}
+                <MenuList
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                />
+              {{/each}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {{!-- Alacart --}}
+      <div class="accordion-item">
+        <h2 class="accordion-header"  id="alacarte">
+          <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <h4 class="text-black">Alacarte</h4>
+          </button>
+        </h2>
+        <div class="accordion-collapse collapse show" id="collapseFour" aria-labelledby="alacarte" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            {{!-- Mode Web Tablet --}}
+            <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Alacarte">
+              {{#each this.menuAlacarte as |menu|}}
+                <MenuCard
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                @qty={{menu.count}}
+                />
+              {{/each}}
+            </div>
+
+            {{!-- Mode Mobile --}}
+            <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Alacarte">
+              {{#each this.menuAlacarte as |menu|}}
+                <MenuList
+                @picture={{menu.picture}}
+                @name={{menu.name}}
+                @description={{menu.description}}
+                @price={{menu.price}}
+                />
+              {{/each}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{{!-- Spacer Bottom --}}
+<div class="spacer-bottom"></div>
+
+{{!-- Navbar Bottom --}}
+<NavbarBottom 
+  @isMenu="true"
+  @qty={{this.qty}} 
+  @subtotal={{this.subtotal}} 
+/>
