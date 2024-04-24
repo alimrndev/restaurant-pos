@@ -4,11 +4,18 @@
 - The application utilizes Ember.js, IBM Loopback 3, and PostgreSQL.
 
 # Frontend:
-- **Framework:** [Ember.js](https://guides.emberjs.com/release/getting-started/quick-start/)
+- **Framework:** [Ember.js v5.3.0](https://guides.emberjs.com/release/getting-started/quick-start/)
+```
+npm install -g ember-cli@5.3.0
+```
 
 # Backend:
-- **Framework / API:** [IBM Loopback 3](https://loopback.io/doc/en/lb3/)
 - **Engine:** [Node.js v16](https://nodejs.org/en/download)
+- **Framework / API:** [IBM Loopback 3](https://loopback.io/doc/en/lb3/)
+```
+npm install -g loopback-cli@3
+```
+
 
 # Database:
 - **Database System:** PostgreSQL
