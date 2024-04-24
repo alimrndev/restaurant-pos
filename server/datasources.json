@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "db_postgresql": {
+    "host": "localhost",
+    "port": 5435,
+    "url": "postgres://user_restaurant:root@localhost/db_restaurant",
+    "database": "db_restaurant",
+    "password": "root",
+    "name": "db_postgresql",
+    "user": "user_restaurant",
+    "connector": "postgresql"
+  }
+}

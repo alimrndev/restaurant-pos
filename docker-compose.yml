@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_restaurant_container
+    environment:
+      POSTGRES_DB: db_restaurant
+      POSTGRES_USER: user_restaurant
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5435:5432"  # Mengubah port eksternal menjadi 5435
+    volumes:
+      - postgres_restaurant_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_restaurant_data:
