@@ -10,10 +10,24 @@
   {{!-- Profile --}}
   <Profile/>
 
+
+  {{!-- Offer Order Again? --}}
+  {{#unless this.isEmpty }}
+      <div class="row text-center mt-5 mb-5">
+          <h3 class="align-self-center">Order Again?</h3>
+          <LinkTo @route="menu">
+              <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit">
+                  <i class="fa-solid fa-utensils"></i> Menu
+              </button>
+          </LinkTo>
+      </div>
+      <div class="spacer-bottom"></div>
+  {{/unless}}
+
   {{!-- Spacer Bottom --}}
   <div class="spacer-bottom"></div>
 
 </div>
 
 {{!-- Navbar Bottom --}}
-<NavbarBottom @isHome="true"/>
+<NavbarBottom @isUser="true"/>

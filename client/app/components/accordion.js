@@ -64,4 +64,10 @@ export default class AccordionComponent extends Component {
     }
   }
 
+  get isShow() {
+    if (this.isPay) {
+      return "show";
+    }
+  }
+
 }

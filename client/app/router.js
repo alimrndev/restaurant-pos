@@ -13,6 +13,5 @@ Router.map(function () {
   this.route('menu');
   this.route('user');
   this.route('order');
-  this.route('invoice');
   this.route('history');
 });

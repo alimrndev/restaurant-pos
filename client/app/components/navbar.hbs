@@ -29,55 +29,44 @@
 {{/if}}
 
 {{#if @isMenu}}
-<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 5px; padding-top: 15px;">
+<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 0px; padding-top: 0px;">
   <div class="container d-flex justify-content-between">
-    <section><LinkTo @route="index"><h4><span class="fa-solid fa-shop" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
-    <section><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h4><span class="fa-solid fa-utensils"></span> Menu</h4></button></LinkTo></section>
-    <section><LinkTo @route="order"><h4><span class="fa-solid fa-shopping-cart" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
+    <section class="text-center"><LinkTo @route="index"><button class="btn btn-sm btn-white" type="button"><h5 class="hover-icon"><i class="fa-solid fa-store"></i><br></h5>Home</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h5><span class="fa-solid fa-utensils"></span> Menu</h5></button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="order"><button class="btn btn-sm btn-white" type="button"><h5><i class="fa-solid fa-shopping-cart"></i><br></h5>Order</button></LinkTo></section>
   </div>
 </nav>
 <div class="spacer" style="margin-top: 5rem;"></div>
 {{/if}}
 
 {{#if @isOrder}}
-<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 5px; padding-top: 15px;">
+<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 0px; padding-top: 0px;">
   <div class="container d-flex justify-content-between">
-    <section><LinkTo @route="menu"><h4><span class="fa-solid fa-utensils" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
-    <section><LinkTo @route="order"><button class="btn btn-sm btn-white" type="button"><h4><span class="fa-solid fa-shopping-cart"></span> Order</h4></button></LinkTo></section>
-    <section><LinkTo @route="invoice"><h4><span class="fa-solid fa-money-bill-wave" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
-  </div>
-</nav>
-<div class="spacer" style="margin-top: 5rem;"></div>
-{{/if}}
-
-{{#if @isInvoice}}
-<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 5px; padding-top: 15px;">
-  <div class="container d-flex justify-content-between">
-    <section><LinkTo @route="order"><h4><span class="fa-solid fa-shopping-cart" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
-    <section><LinkTo @route="invoice"><button class="btn btn-sm btn-white" type="button"><h4><span class="fa-solid fa-money-bill-wave"></span> Invoice</h4></button></LinkTo></section>
-    <section><LinkTo @route="history"><h4><span class="fa-solid fa-book-open" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
+    <section class="text-center"><LinkTo @route="index"><button class="btn btn-sm btn-white" type="button"><h5 class="hover-icon"><i class="fa-solid fa-store"></i><br></h5>Home</button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="order"><button class="btn btn-sm btn-white" type="button"><h5><span class="fa-solid fa-shopping-cart"></span> Order</h5></button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h5><i class="fa-solid fa-utensils"></i><br></h5>Menu</button></LinkTo></section>
   </div>
 </nav>
 <div class="spacer" style="margin-top: 5rem;"></div>
 {{/if}}
 
 {{#if @isHistory}}
-<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 5px; padding-top: 15px;">
+<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 0px; padding-top: 0px;">
   <div class="container d-flex justify-content-between">
-    <section><LinkTo @route="invoice"><h4><span class="fa-solid fa-money-bill-wave" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
-    <section><LinkTo @route="history"><button class="btn btn-sm btn-white" type="button"><h4><span class="fa-solid fa-book-open"></span> History</h4></button></LinkTo></section>
-    <section><LinkTo @route="user"><h4><span class="fa-solid fa-user" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
+    <section class="text-center"><LinkTo @route="index"><button class="btn btn-sm btn-white" type="button"><h5 class="hover-icon"><i class="fa-solid fa-store"></i><br></h5>Home</button></LinkTo></section>
+    <section><LinkTo @route="history"><button class="btn btn-sm btn-white" type="button"><h5><span class="fa-solid fa-book-open"></span> History</h5></button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h5><i class="fa-solid fa-utensils"></i><br></h5>Menu</button></LinkTo></section>
   </div>
 </nav>
 <div class="spacer" style="margin-top: 5rem;"></div>
 {{/if}}
 
 {{#if @isUser}}
-<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 5px; padding-top: 15px;">
+<nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 0px; padding-top: 0px;">
   <div class="container d-flex justify-content-between">
-    <section><LinkTo @route="history"><h4><span class="fa-solid fa-book-open" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
-    <section><LinkTo @route="user"><button class="btn btn-sm btn-white" type="button"><h4><span class="fa-solid fa-user"></span> Profile</h4></button></LinkTo></section>
-    <section><LinkTo @route="menu"><h4><span class="fa-solid fa-utensils" style="font-size: 1.2rem; color: black;"></span></h4></LinkTo></section>
+    <section class="text-center"><LinkTo @route="index"><button class="btn btn-sm btn-white" type="button"><h5 class="hover-icon"><i class="fa-solid fa-store"></i><br></h5>Home</button></LinkTo></section>
+    <section><LinkTo @route="user"><button class="btn btn-sm btn-white" type="button"><h5><span class="fa-solid fa-user"></span> Profile</h5></button></LinkTo></section>
+    <section class="text-center"><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h5><i class="fa-solid fa-utensils"></i><br></h5>Menu</button></LinkTo></section>
   </div>
 </nav>
 <div class="spacer" style="margin-top: 5rem;"></div>
