@@ -59,6 +59,7 @@ CREATE TABLE orders (
   order_type VARCHAR(100) NOT NULL DEFAULT 'dine-in', -- dine-in, take-away
   order_table INTEGER DEFAULT 0,
   order_status VARCHAR(100) NOT NULL DEFAULT 'waiting-payment',  -- waiting-payment, payment-success, progress, ready, completed
+  qty INTEGER DEFAULT 0,
   subtotal_price FLOAT DEFAULT 0,
   tax_percentage FLOAT DEFAULT 0,
   tax_price FLOAT DEFAULT 0,

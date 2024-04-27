@@ -30,40 +30,11 @@
     {{/if}}
     
     {{!-- History  --}}
-    <Accordion 
-        @orderNumber="ORD-001"
-        @customer="Eunha GFRIEND"
-        @manager="Manager Kim"
-        @status="waiting-payment"
-        @itemList={{this.cart.itemList}}
-    />
-
-    {{!-- History  --}}
-    <Accordion 
-        @orderNumber="ORD-002"
-        @customer="Eunha GFRIEND"
-        @manager="Manager Kim"
-        @status="in-progress"
-        @itemList={{this.cart.itemList}}
-    />
-
-    {{!-- History  --}}
-    <Accordion 
-        @orderNumber="ORD-003"
-        @customer="Eunha GFRIEND"
-        @manager="Manager Kim"
-        @status="ready"
-        @itemList={{this.cart.itemList}}
-    />
-
-    {{!-- History  --}}
-    <Accordion 
-        @orderNumber="ORD-004"
-        @customer="Eunha GFRIEND"
-        @manager="Manager Kim"
-        @status="completed"
-        @itemList={{this.cart.itemList}}
-    />
+    {{#each this.orderHistory as |orderHistory|}}
+        <Accordion
+        @orderList={{orderHistory}}
+        />
+    {{/each}}
 
     {{!-- Offer Order Again? --}}
     {{#unless this.isEmpty }}

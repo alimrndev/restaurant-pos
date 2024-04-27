@@ -1,55 +1,45 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
 
 export default class AccordionComponent extends Component {
-  @service('cart') cart;
+  @service('order') order;
+  @service('menu') menu;
 
-  get qty() {
-    const { itemList } = this.args;
-    return itemList.reduce((acc, item) => {
-      return acc + item.count;
-    }, 0);
-  }
-
-  get subtotal() {
-    const { itemList } = this.args;
-    return itemList.reduce((acc, item) => {
-      return acc + item.price * item.count;
-    }, 0);
-  }
-
-  get tax() {
-    return 0.11 * this.subtotal;
-  }
-
-  get total() {
-    return this.subtotal + this.tax;
-  }
-
-  get isEmpty() {
-    const { itemList } = this.args;
-    if (itemList.length) {
-      return false;
-    } else {
-      return true;
+  @action
+  seeDetail() {
+    const { orderList } = this.args;
+    const isHistoryExist = this.order.datas.some(item => item.id === orderList.id && item.history);
+    if (!isHistoryExist) {
+      this.order.getAllOrderItems(orderList.id);
     }
+  }
+
+  get orderDate() {
+    const { orderList } = this.args;
+    if (orderList.order_date) {
+      const date = new Date(orderList.order_date);
+      const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+      return date.toLocaleDateString('en-US', options);
+    }
+    return "";
   }
 
   get bgColor() {
-    const { status } = this.args;
-    if (status === 'pending' || status === 'waiting-payment') {
+    const { orderList } = this.args;
+    if (orderList.order_status === 'pending' || orderList.order_status === 'waiting-payment') {
       return 'danger';
     }
 
-    if (status === 'in-progress') {
+    if (orderList.order_status === 'progress') {
       return 'warning';
     }
 
-    if (status === 'ready') {
+    if (orderList.order_status === 'ready') {
       return 'info';
     }
 
-    if (status === 'completed') {
+    if (orderList.order_status === 'completed') {
       return 'success';
     }
 
@@ -57,8 +47,8 @@ export default class AccordionComponent extends Component {
   }
 
   get isPay() {
-    const { status } = this.args;
-    if (status === 'pending' || status === 'waiting-payment') {
+    const { orderList } = this.args;
+    if (orderList.order_status === 'pending' || orderList.order_status === 'waiting-payment') {
       return true;
     }
   }

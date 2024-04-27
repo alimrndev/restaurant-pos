@@ -14,27 +14,27 @@
     ]
   },
   "users": {
-    "dataSource": "postgreDs",
+    "dataSource": "db",
     "public": true
   },
   "restaurants": {
-    "dataSource": "postgreDs",
+    "dataSource": "db",
     "public": true
   },
   "menu_items": {
-    "dataSource": "postgreDs",
+    "dataSource": "db",
     "public": true
   },
   "orders": {
-    "dataSource": "postgreDs",
+    "dataSource": "db",
     "public": true
   },
   "order_items": {
-    "dataSource": "postgreDs",
+    "dataSource": "db",
     "public": true
   },
   "order_states": {
-    "dataSource": "postgreDs",
+    "dataSource": "db",
     "public": true
   }
 }

@@ -18,11 +18,13 @@
     },
     "customer_id": {
       "type": "number",
-      "required": true
+      "required": true,
+      "default": 1
     },
     "order_date": {
       "type": "date",
-      "required": true
+      "required": true,
+      "defaultFn": "now"
     },
     "order_type": {
       "type": "string",
@@ -38,6 +40,11 @@
       "type": "string",
       "required": true,
       "default": "pending"
+    },
+    "qty": {
+      "type": "number",
+      "required": true,
+      "default": 0
     },
     "subtotal_price": {
       "type": "number",
@@ -90,14 +97,6 @@
     "completed_date": {
       "type": "date",
       "required": false
-    },
-    "rating": {
-      "type": "number",
-      "required": true
-    },
-    "comment": {
-      "type": "string",
-      "required": true
     },
     "created_by": {
       "type": "number",

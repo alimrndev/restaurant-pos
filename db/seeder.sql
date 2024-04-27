@@ -40,12 +40,12 @@ VALUES
   ('Salad', 'Salad segar dan renyah dengan pilihan dressing Anda.', 149000, 25, 'nominal', 'alacarte', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9');
 
 -- Insert dummy data for orders
-INSERT INTO orders (customer_id, order_number, order_status, subtotal_price, tax_percentage, tax_price, total_price)
+INSERT INTO orders (customer_id, order_number, order_status, qty, subtotal_price, tax_percentage, tax_price, total_price)
 VALUES
-  (6, 'ORD-001', 'completed', 100000, 0.11, 11000, 111000),
-  (6, 'ORD-002', 'ready', 100000, 0.11, 11000, 111000),
-  (6, 'ORD-004', 'progress', 100000, 0.11, 11000, 111000),
-  (6, 'ORD-005', 'waiting-payment', 100000, 0.11, 11000, 111000);
+  (6, 'ORD-001', 'completed', 1, 100000, 0.11, 11000, 111000),
+  (6, 'ORD-002', 'ready', 1, 100000, 0.11, 11000, 111000),
+  (6, 'ORD-004', 'progress', 1, 100000, 0.11, 11000, 111000),
+  (6, 'ORD-005', 'waiting-payment', 1, 100000, 0.11, 11000, 111000);
  
  -- Insert dummy data for order_items
 INSERT INTO order_items (order_id, menu_item_id, price, qty, subtotal, item_status)
