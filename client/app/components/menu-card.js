@@ -7,8 +7,9 @@ export default class MenuCardComponent extends Component {
 
   @action
   addToCart() {
-    const { name, description, picture, price } = this.args;
+    const { id, name, description, picture, price } = this.args;
     this.cart.addItem({
+      id,
       name,
       description,
       picture,
@@ -18,8 +19,9 @@ export default class MenuCardComponent extends Component {
 
   @action
   subToCart() {
-    const { name, description, picture, price } = this.args;
+    const { id, name, description, picture, price } = this.args;
     this.cart.subItem({
+      id,
       name,
       description,
       picture,
@@ -28,8 +30,8 @@ export default class MenuCardComponent extends Component {
   }
 
   get qtyCount() {
-    const { name } = this.args;
-    const item = this.cart.itemList.filter((item) => item.name === name);
+    const { id } = this.args;
+    const item = this.cart.itemList.filter((item) => item.id === id);
     if (item.length) {
       return item[0].count;
     } else {

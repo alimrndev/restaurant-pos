@@ -65,9 +65,8 @@
 <div class="card bg-light mode-mobile fixed-bottom" style="padding-top: 2px; padding-bottom: 2px;">
   <div class="container-fluid">
     <div class="row mb-2">
-      <section class="col-4 text-center"><small>Subtotal</small><br>Rp {{currency @subtotal}}</section>
-      <section class="col-4 text-center"><small>Tax</small><br>Rp {{currency @tax}}</section>
-      <section class="col-4"></section>
+      <section class="col-6 text-center"><small>Subtotal</small><br>Rp {{currency @subtotal}}</section>
+      <section class="col-6 text-center"><small>Tax</small><br>Rp {{currency @tax}}</section>
     </div>
       <div class="d-grid gap-2">
         <button class="btn btn-primary fa-beat"  {{on "click" this.showModal}} style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit"  data-toggle="modal" data-target="#confirmationModal">

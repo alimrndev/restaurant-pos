@@ -1,14 +1,14 @@
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Insert dummy data for users
-INSERT INTO users (username, email, role, picture, password)
+INSERT INTO users (username, fullname, gender, email, role, picture, password)
 VALUES
-  ('admin', 'admin@restaurant.com', 'admin', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
-  ('manager', 'manager@restaurant.com', 'manager', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
-  ('cashier', 'cashier@restaurant.com', 'cashier', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
-  ('chef', 'chef@restaurant.com', 'chef', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
-  ('waiter', 'waiter@restaurant.com', 'waiter', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
-  ('customer', 'customer@restaurant.com', 'customer', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10)));
+  ('admin', 'Mr Admin', 'male', 'admin@restaurant.com', 'admin', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
+  ('manager', 'Mr Manager', 'male', 'manager@restaurant.com', 'manager', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
+  ('cashier', 'Mr Cashier', 'male', 'cashier@restaurant.com', 'cashier', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
+  ('chef', 'Mr Chef', 'male', 'chef@restaurant.com', 'chef', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
+  ('waiter', 'Mr Waiter', 'male', 'waiter@restaurant.com', 'waiter', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10))),
+  ('customer', 'Mr Customer', 'male', 'customer@restaurant.com', 'customer', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10)));
 
 -- Insert dummy data for restaurants
 INSERT INTO restaurants (
@@ -42,22 +42,11 @@ VALUES (
   1
 );
 
--- Insert dummy data for opening_hours
-INSERT INTO opening_hours (restaurant_id, day_of_week, opening_time, closing_time)
-VALUES
-    (1, 'monday', '09:00 AM', '18:00 PM'),
-    (1, 'tuesday', '09:00 AM', '18:00 PM'),
-    (1, 'wednesday', '09:00 AM', '18:00 PM'),
-    (1, 'thursday', '09:00 AM', '18:00 PM'),
-    (1, 'friday', '09:00 AM', '18:00 PM'),
-    (1, 'saturday', '09:00 AM', '21:00 PM'),
-    (1, 'sunday', '09:00 AM', '21:00 PM');
-
 -- Insert dummy data for menu_items
 INSERT INTO menu_items (name, description, price, qty, discount_type, category, picture)
 VALUES
-  ('Paket Nusantara (Lunch)', 'Nikmati buffet makan siang tanpa batas dengan berbagai hidangan.', 599000, 25, 'nominal', 'package', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
-  ('Paket Nusantara (Dinner)', 'Manjakan diri Anda dengan pengalaman makan malam yang menyenangkan dengan pilihan all-you-can-eat kami.', 799000, 25, 'nominal', 'package', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
+  ('Paket Nusantara (Lunch)', 'Nikmati buffet makan siang tanpa batas dengan berbagai hidangan.', 100000, 25, 'nominal', 'package', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
+  ('Paket Nusantara (Dinner)', 'Manjakan diri Anda dengan pengalaman makan malam yang menyenangkan dengan pilihan all-you-can-eat kami.', 200000, 25, 'nominal', 'package', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
 
   ('Steak Wagyu A5', 'Nikmati kelezatan steak Wagyu A5 premium kami yang lumer di mulut.', 1999000, 25, 'nominal', 'foods', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
   ('Salmon Teriyaki', 'Salmon panggang yang dilapisi saus teriyaki manis dan gurih.', 699000, 25, 'nominal', 'foods', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
@@ -76,3 +65,33 @@ VALUES
   ('Sayuran Campur', 'Campuran sayuran kukus yang berwarna-warni dan sehat.', 129000, 25, 'nominal', 'alacarte', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
   ('Roti Bawang Putih', 'Roti bawang putih yang hangat dan bermentega, cocok untuk dicocol.', 89000, 25, 'nominal', 'alacarte', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
   ('Salad', 'Salad segar dan renyah dengan pilihan dressing Anda.', 149000, 25, 'nominal', 'alacarte', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9');
+
+-- Insert dummy data for orders
+INSERT INTO orders (customer_id, order_number, order_status, subtotal_price, tax_percentage, tax_price, total_price)
+VALUES
+  (6, 'ORD-001', 'completed', 100000, 0.11, 11000, 111000),
+  (6, 'ORD-002', 'ready', 100000, 0.11, 11000, 111000),
+  (6, 'ORD-004', 'progress', 100000, 0.11, 11000, 111000),
+  (6, 'ORD-005', 'waiting-payment', 100000, 0.11, 11000, 111000);
+ 
+ -- Insert dummy data for order_items
+INSERT INTO order_items (order_id, menu_item_id, price, qty, subtotal, item_status)
+VALUES
+  (1, 1, 100000, 1, 100000, 'completed'),
+  (2, 1, 100000, 1, 100000, 'ready'),
+  (3, 1, 100000, 1, 100000, 'progress'),
+  (4, 1, 100000, 1, 100000, 'waiting-payment');
+
+-- Insert dummy data for order_states
+INSERT INTO order_states (order_id, order_status, created_by, updated_by)
+VALUES
+  (1, 'waiting-payment', 6, 6),
+  (1, 'progress', 3, 3),
+  (1, 'ready', 4, 4),
+  (1, 'completed', 5, 5),
+  (2, 'waiting-payment', 6, 6),
+  (2, 'progress', 3, 3),
+  (2, 'ready', 4, 4),
+  (3, 'waiting-payment', 6, 6),
+  (3, 'progress', 3, 3),
+  (4, 'waiting-payment', 6, 6);

@@ -31,6 +31,7 @@
     <div class="list-group">
       {{#each this.cart.itemList as |item|}}
         <MenuList 
+          @id={{item.id}}
           @picture={{item.picture}}
           @name={{item.name}}
           @description={{item.description}}

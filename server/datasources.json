@@ -3,14 +3,18 @@
     "name": "db",
     "connector": "memory"
   },
-  "db_postgresql": {
+  "postgreDs": {
     "host": "localhost",
     "port": 5435,
-    "url": "postgres://user_restaurant:root@localhost/db_restaurant",
+    "url": "",
     "database": "db_restaurant",
-    "password": "root",
-    "name": "db_postgresql",
+    "password": "password",
+    "name": "postgreDs",
     "user": "user_restaurant",
-    "connector": "postgresql"
+    "connector": "postgresql",
+    "min": 5,
+    "max": 200,
+    "idleTimeoutMillis": 60000,
+    "ssl": false
   }
 }

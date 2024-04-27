@@ -13,26 +13,28 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "db"
+  "users": {
+    "dataSource": "postgreDs",
+    "public": true
   },
-  "AccessToken": {
-    "dataSource": "db",
-    "public": false
+  "restaurants": {
+    "dataSource": "postgreDs",
+    "public": true
   },
-  "ACL": {
-    "dataSource": "db",
-    "public": false
+  "menu_items": {
+    "dataSource": "postgreDs",
+    "public": true
   },
-  "RoleMapping": {
-    "dataSource": "db",
-    "public": false,
-    "options": {
-      "strictObjectIDCoercion": true
-    }
+  "orders": {
+    "dataSource": "postgreDs",
+    "public": true
   },
-  "Role": {
-    "dataSource": "db",
-    "public": false
+  "order_items": {
+    "dataSource": "postgreDs",
+    "public": true
+  },
+  "order_states": {
+    "dataSource": "postgreDs",
+    "public": true
   }
 }

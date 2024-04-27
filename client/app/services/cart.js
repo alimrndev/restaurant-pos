@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 class Item {
   @tracked count;
 
+  id;
   name;
   description;
   picture;
@@ -12,6 +13,7 @@ class Item {
   tax;
 
   constructor(item) {
+    this.id = item.id;
     this.name = item.name;
     this.description = item.description;
     this.picture = item.picture;
@@ -26,9 +28,7 @@ export default class CartService extends Service {
   @tracked itemList = [];
 
   addItem(item) {
-    const existingItem = this.itemList.find(({ name }) => {
-      return name === item.name;
-    });
+    const existingItem = this.itemList.find(({ id }) => id === item.id);
 
     if (existingItem) {
       existingItem.count += 1;
@@ -46,7 +46,7 @@ export default class CartService extends Service {
   }
 
   subItem(item) {
-    const existingItem = this.itemList.find(({ name }) => name === item.name);
+    const existingItem = this.itemList.find(({ id }) => id === item.id);
 
     if (existingItem) {
       if (existingItem.count > 1) {

@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 
 export default class AccordionComponent extends Component {
   @service('cart') cart;
@@ -38,36 +37,35 @@ export default class AccordionComponent extends Component {
 
   get bgColor() {
     const { status } = this.args;
-    if (status === "pending" || status === "waiting-payment") {
-      return "danger";
+    if (status === 'pending' || status === 'waiting-payment') {
+      return 'danger';
     }
 
-    if (status === "in-progress") {
-      return "warning";
-    } 
+    if (status === 'in-progress') {
+      return 'warning';
+    }
 
-    if (status === "ready") {
-      return "info";
-    } 
+    if (status === 'ready') {
+      return 'info';
+    }
 
-    if (status === "completed") {
-      return "success";
-    } 
-      
-    return "danger";
+    if (status === 'completed') {
+      return 'success';
+    }
+
+    return 'danger';
   }
 
   get isPay() {
     const { status } = this.args;
-    if (status === "pending" || status === "waiting-payment") {
+    if (status === 'pending' || status === 'waiting-payment') {
       return true;
     }
   }
 
   get isShow() {
     if (this.isPay) {
-      return "show";
+      return 'show';
     }
   }
-
 }

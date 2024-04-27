@@ -1,0 +1,127 @@
+{
+  "name": "orders",
+  "plural": "orders",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "postgresql": {
+      "schema": "public",
+      "table": "orders"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "unique": true
+    },
+    "customer_id": {
+      "type": "number",
+      "required": true
+    },
+    "order_date": {
+      "type": "date",
+      "required": true
+    },
+    "order_type": {
+      "type": "string",
+      "required": true,
+      "default": "dine-in"
+    },
+    "order_table": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "order_status": {
+      "type": "string",
+      "required": true,
+      "default": "pending"
+    },
+    "subtotal_price": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "tax_percentage": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "tax_price": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "total_price": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "pic_id": {
+      "type": "number",
+      "required": true,
+      "default": 2
+    },
+    "cashier_id": {
+      "type": "number",
+      "required": true,
+      "default": 3
+    },
+    "payment_date": {
+      "type": "date",
+      "required": false
+    },
+    "chef_id": {
+      "type": "number",
+      "required": true,
+      "default": 4
+    },
+    "progress_date": {
+      "type": "date",
+      "required": false
+    },
+    "waiter_id": {
+      "type": "number",
+      "required": true,
+      "default": 5
+    },
+    "completed_date": {
+      "type": "date",
+      "required": false
+    },
+    "rating": {
+      "type": "number",
+      "required": true
+    },
+    "comment": {
+      "type": "string",
+      "required": true
+    },
+    "created_by": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "updated_by": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "updated_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -3,26 +3,35 @@
 - Users can browse menus, place orders, and manage their accounts. 
 - The application utilizes Ember.js, IBM Loopback 3, and PostgreSQL.
 
-# Frontend:
+# Requirements
+## Runtime:
+- **Engine:** [Node.js v16.20.2](https://nodejs.org/en/download)
+Download Link:
+```
+https://nodejs.org/en/download
+```
+
+## Dockerize:
+- **Dockerize:** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+Download Link:
+```
+https://www.docker.com/products/docker-desktop/
+```
+
+## Frontend:
 - **Framework:** [Ember.js v5.3.0](https://guides.emberjs.com/release/getting-started/quick-start/)
 ```
 npm install -g ember-cli@5.3.0
 ```
 
-# Backend:
-- **Engine:** [Node.js v16](https://nodejs.org/en/download)
+## Backend:
 - **Framework / API:** [IBM Loopback 3](https://loopback.io/doc/en/lb3/)
 ```
 npm install -g loopback-cli@3
 ```
 
-
-# Database:
-- **Database System:** PostgreSQL
-- **Database Schema:**
-  ![db-schema](https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/Restaurant%20Ordering%20Diagram.png?alt=media&token=97518cb7-a8c1-4f41-9d3b-09a263ed67c4)
-
 # Getting Started Locally
+## Clone Repository
 
 1. Clone this repository to your local machine:
 
@@ -36,30 +45,51 @@ npm install -g loopback-cli@3
    cd restaurant-pos
    ```
 
-3. Install dependencies:
+## Setup Database using Docker
+3. Setup db postgresql and Build the container (if you need customize open file docker-compose.yml)
+```
+docker compose up --build -d
+```
+
+## Backend Install and Start
+4. Install Backend dependencies:
 
    ```bash
    npm install
    ```
 
-4. Start the local Server:
+5. Start Backend:
 
    ```bash
    npm start
    ```
 
-# Run with Docker
+## Frontend Install and Start
+6. Move to the Frontend directory
 
-Build the container
-```
-docker compose up --build -d
-```
+   ```bash
+   cd client
+   ```
+   
+7. Install Frontend dependencies:
 
-Stop the Container
+   ```bash
+   npm install
+   ```
 
-```
-docker compose down 
-```
+8. Start Frontend:
+
+   ```bash
+   npm start
+   ```
+
+   See your restaurant landingpage at http://localhost:4200/
+
+# Database:
+- **Database System:** PostgreSQL
+- **Database Schema:**
+  ![db-schema](https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/Restaurant%20Ordering%20Diagram.png?alt=media&token=97518cb7-a8c1-4f41-9d3b-09a263ed67c4)
+
 
 # License
 

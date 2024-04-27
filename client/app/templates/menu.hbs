@@ -7,6 +7,7 @@
   <section class="mt-3 mb-3">
     <div class="accordion" id="menu">
       {{!-- Package --}}
+      {{#if this.menuPackage.length}}
       <div class="accordion-item">
         <h2 class="accordion-header" id="package">
           <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -20,6 +21,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Package">
               {{#each this.menuPackage as |menu|}}
                 <MenuCard
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -33,6 +35,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Package">
               {{#each this.menuPackage as |menu|}}
                 <MenuList
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -44,8 +47,10 @@
           </div>
         </div>
       </div>
+      {{/if}}
 
       {{!-- Foods --}}
+      {{#if this.menuFoods.length}}
       <div class="accordion-item">
         <h2 class="accordion-header" id="foods">
           <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -59,6 +64,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Foods">
               {{#each this.menuFoods as |menu|}}
                 <MenuCard
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -72,6 +78,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Foods">
               {{#each this.menuFoods as |menu|}}
                 <MenuList
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -83,8 +90,10 @@
           </div>
         </div>
       </div>
+      {{/if}}
 
       {{!-- Drinks --}}
+      {{#if this.menuDrinks.length}}
       <div class="accordion-item">
         <h2 class="accordion-header" id="drinks">
           <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -98,6 +107,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Drinks">
               {{#each this.menuDrinks as |menu|}}
                 <MenuCard
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -111,6 +121,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Drinks">
               {{#each this.menuDrinks as |menu|}}
                 <MenuList
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -122,8 +133,10 @@
           </div>
         </div>
       </div>
-
-      {{!-- Alacart --}}
+      {{/if}}
+      
+      {{!-- Alacarte --}}
+      {{#if this.menuAlacarte.length}}
       <div class="accordion-item">
         <h2 class="accordion-header"  id="alacarte">
           <button class="accordion-button bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -137,6 +150,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Alacarte">
               {{#each this.menuAlacarte as |menu|}}
                 <MenuCard
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -150,6 +164,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Alacarte">
               {{#each this.menuAlacarte as |menu|}}
                 <MenuList
+                @id={{menu.id}}
                 @picture={{menu.picture}}
                 @name={{menu.name}}
                 @description={{menu.description}}
@@ -161,6 +176,8 @@
           </div>
         </div>
       </div>
+      {{/if}}
+
     </div>
   </section>
 </div>

@@ -1,10 +1,10 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class MenuController extends Controller {
   @service('cart') cart;
+  @service('menu') menu;
   @tracked category = 'all';
 
   get qty() {
@@ -35,42 +35,45 @@ export default class MenuController extends Controller {
     }
   }
 
-  @action
-  onCategory(newCategory) {
-    this.category = newCategory;
-  }
-
-  @action
-  onSelectMenu(newMenu) {
-    this.listMenu = { ...(this.listMenu + newMenu) };
-    this.qty++;
-  }
-
-  get menu() {
-    return this.model.data;
-  }
-
   get menuByCategory() {
     if (this.category === 'all') {
-      return this.menu;
+      return this.menu.datas.length > 0 ? this.menu.datas : [];
     }
-    return this.menu.filter((item) => item.category === this.category);
+    const filteredMenu = this.menu.datas.filter(
+      (item) => item.category === this.category,
+    );
+    return filteredMenu.length > 0 ? filteredMenu : [];
   }
-
   get menuPackage() {
-    return this.menu.filter((item) => item.category === 'package');
+    if (this.menu.datas.length > 0) {
+      return this.menu.datas.filter((item) => item.category === 'package');
+    } else {
+      return [];
+    }
   }
 
   get menuFoods() {
-    return this.menu.filter((item) => item.category === 'foods');
+    if (this.menu.datas.length > 0) {
+      return this.menu.datas.filter((item) => item.category === 'foods');
+    } else {
+      return [];
+    }
   }
 
   get menuDrinks() {
-    return this.menu.filter((item) => item.category === 'drinks');
+    if (this.menu.datas.length > 0) {
+      return this.menu.datas.filter((item) => item.category === 'drinks');
+    } else {
+      return [];
+    }
   }
 
   get menuAlacarte() {
-    return this.menu.filter((item) => item.category === 'alacarte');
+    if (this.menu.datas.length > 0) {
+      return this.menu.datas.filter((item) => item.category === 'alacarte');
+    } else {
+      return [];
+    }
   }
 
   get isAll() {

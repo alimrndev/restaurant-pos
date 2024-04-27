@@ -1,46 +1,57 @@
 <div class="container text-center mt-5 mb-5">
     <h5 class="mb-3">-= Customer Info =-</h5>
+    <form class="customer-form">
     <div class="table-responsive">
         <table class="table table-hover">
-            <thead>
-                <tr>
-                <th scope="col-4" class="text-left">Key</th>
-                <th scope="col-8" class="text-left">Value</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
                 <th scope="row" class="text-left">Full Name</th>
-                <td><input type="text" placeholder="Friske Novita Damayanti" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" placeholder={{this.fullname}} value="" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </td>
                 </tr>
                 <tr>
                 <th scope="row" class="text-left">Username</th>
-                <td><input type="text" placeholder="customer1" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" placeholder={{this.username}} value=""  style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </td>
                 </tr>
                 <tr>
                 <th scope="row" class="text-left">Password</th>
-                <td><input type="password" placeholder="*****" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
+                <td>
+                    <div class="form-group">
+                        <input type="password" placeholder={{this.password}} value=""  style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </td>
                 </tr>
                 <tr>
                 <th scope="row" class="text-left">Email</th>
-                <td><input type="email" placeholder="customer@gmail.com" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
+                <td>
+                    <div class="form-group">
+                        <input type="email" placeholder={{this.email}} value=""  style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </td>
                 </tr>
                 <tr>
                 <th scope="row" class="text-left">Gender</th>
-                <td><input type="text" placeholder="Female" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" placeholder={{this.gender}} value=""  style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </td>
                 </tr>
                 <tr>
-                <th scope="row" class="text-left">Date of Birth</th>
-                <td><input type="text" placeholder="16-11-1995" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
+                <th scope="row" class="text-left">Phone</th>
+                <td>
+                    <div class="form-group">
+                        <input type="text" placeholder={{this.phone}} value=""  style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
+                    </div>
+                </td>
                 </tr>
-                <tr>
-                <th scope="row" class="text-left">Phone Number</th>
-                <td><input type="text" placeholder="081122334455" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
-                </tr>
-                <tr>
-                <th scope="row" class="text-left">Address</th>
-                <td><input type="text" placeholder="Bogor Indonesia" style="border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 100%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);"></td>
-                </tr> 
             </tbody>
         </table>
     </div>
@@ -48,5 +59,13 @@
         <button type="reset" class="btn btn-danger" style="width: 45%;" onclick="resetForm()">Cancel</button>
         <button type="submit" class="btn btn-success" style="width: 45%;">Save</button>
     </div>
+    </form>
 </div>
 
+<script>
+    function resetForm() {
+        document.querySelectorAll('input').forEach(input => {
+            input.value = "";
+        });
+    }
+</script>
