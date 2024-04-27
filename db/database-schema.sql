@@ -70,7 +70,7 @@ CREATE TABLE menu_items (
   description VARCHAR(255),
   picture VARCHAR(255),
   price FLOAT NOT NULL DEFAULT 0,
-  qty INTEGER NOT NULL DEFAULT 0,
+  stock INTEGER NOT NULL DEFAULT 0,
   discount_type VARCHAR(100) DEFAULT 'nominal',  -- nominal, percentage
   discount_value FLOAT DEFAULT 0,
   category VARCHAR(100) NOT NULL DEFAULT 'alacarte',
@@ -127,6 +127,8 @@ CREATE TABLE order_items (
   discount_value FLOAT DEFAULT 0,
   subtotal FLOAT NOT NULL,
   item_status VARCHAR DEFAULT 'waiting-payment', -- waiting-payment, progress, ready, completed
+  cashier_id INTEGER DEFAULT 3, -- Cashier / Task Payment
+  payment_date DATE,
   chef_id INTEGER DEFAULT 4, -- Chef / Task Cook / Progress
   progress_date DATE,
   waiter_id INTEGER DEFAULT 5, -- Waiter / Task Serve / Completed

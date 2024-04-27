@@ -43,7 +43,7 @@ VALUES (
 );
 
 -- Insert dummy data for menu_items
-INSERT INTO menu_items (name, description, price, qty, discount_type, category, picture)
+INSERT INTO menu_items (name, description, price, stock, discount_type, category, picture)
 VALUES
   ('Paket Nusantara (Lunch)', 'Nikmati buffet makan siang tanpa batas dengan berbagai hidangan.', 100000, 25, 'nominal', 'package', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
   ('Paket Nusantara (Dinner)', 'Manjakan diri Anda dengan pengalaman makan malam yang menyenangkan dengan pilihan all-you-can-eat kami.', 200000, 25, 'nominal', 'package', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9'),
