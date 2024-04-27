@@ -8,7 +8,7 @@ export default class MenuService extends Service {
 
   async createMenu(data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menus`;
+    const url = `${apiURL}/menu_items`;
     console.log('Start Fetching API createMenu:', url);
 
     try {
@@ -34,7 +34,7 @@ export default class MenuService extends Service {
 
   async getAllMenu() {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menus`;
+    const url = `${apiURL}/menu_items`;
     console.log('Start Fetching API getAllMenu:', url);
 
     try {
@@ -50,7 +50,8 @@ export default class MenuService extends Service {
       }
 
       console.log('API getAllMenu successful!');
-      return (this.datas = await response.json());
+      const resp = await response.json();
+      return (this.datas = resp.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -58,7 +59,7 @@ export default class MenuService extends Service {
 
   async getOneMenu(id) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menus/${id}`;
+    const url = `${apiURL}/menu_items/${id}`;
     console.log('Start Fetching API getOneMenu:', url);
 
     try {
@@ -82,7 +83,7 @@ export default class MenuService extends Service {
 
   async updateMenu(id, data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menus/${id}`;
+    const url = `${apiURL}/menu_items/${id}`;
     console.log('Start Fetching API updateMenu:', url);
 
     try {
@@ -108,7 +109,7 @@ export default class MenuService extends Service {
 
   async patchMenu(id, data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menus/${id}`;
+    const url = `${apiURL}/menu_items/${id}`;
     console.log('Start Fetching API patchMenu:', url);
 
     try {
@@ -134,7 +135,7 @@ export default class MenuService extends Service {
 
   async deleteMenu(id) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menus/${id}`;
+    const url = `${apiURL}/menu_items/${id}`;
     console.log('Start Fetching API deleteMenu:', url);
 
     try {
