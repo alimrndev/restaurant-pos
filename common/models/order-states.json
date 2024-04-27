@@ -4,11 +4,52 @@
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "postgresql": {
+      "schema": "public",
+      "table": "order_states"
+    }
   },
-  "properties": {},
+  "properties": {
+    "id": {
+      "type": "number",
+      "required": true,
+      "unique": true
+    },
+    "order_id": {
+      "type": "number",
+      "required": true
+    },
+    "order_status": {
+      "type": "string",
+      "required": true
+    },
+    "created_by": {
+      "type": "number",
+      "default": 1
+    },
+    "updated_by": {
+      "type": "number",
+      "default": 1
+    },
+    "updated_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "created_at": {
+      "type": "date",
+      "defaultFn": "now"
+    }
+  },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "order": {
+      "type": "belongsTo",
+      "model": "orders",
+      "foreignKey": "order_id"
+    }
+  },
   "acls": [],
-  "methods": {}
+  "methods": {} 
 }

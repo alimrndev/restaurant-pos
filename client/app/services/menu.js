@@ -50,8 +50,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API getAllMenu successful!');
-      const resp = await response.json();
-      return (this.datas = resp.data);
+      return (this.datas = await response.json());
     } catch (error) {
       console.error('Error fetching data:', error);
     }

@@ -2,10 +2,10 @@
   "name": "menu_items",
   "plural": "menu_items",
   "base": "PersistedModel",
+  "idInjection": true,
   "options": {
-    "idInjection": false,
+    "validateUpsert": true,
     "postgresql": {
-      "schema": "public",
       "table": "menu_items"
     }
   },
@@ -13,163 +13,53 @@
     "id": {
       "type": "number",
       "required": true,
-      "length": 32,
-      "precision": null,
-      "scale": null,
-      "postgresql": {
-        "columnName": "id",
-        "dataType": "integer",
-        "dataLength": 32,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "NO"
-      }
+      "unique": true
     },
     "name": {
       "type": "string",
       "required": true,
-      "unique": true,
-      "postgresql": {
-        "columnName": "name",
-        "dataType": "character varying",
-        "dataLength": 100,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "NO"
-      }
+      "unique": true
     },
     "description": {
-      "type": "string",
-      "postgresql": {
-        "columnName": "description",
-        "dataType": "character varying",
-        "dataLength": 255,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "type": "string"
     },
     "picture": {
-      "type": "string",
-      "postgresql": {
-        "columnName": "picture",
-        "dataType": "character varying",
-        "dataLength": 255,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "type": "string"
     },
     "price": {
       "type": "number",
-      "required": true,
-      "default": 0,
-      "postgresql": {
-        "columnName": "price",
-        "dataType": "numeric",
-        "dataLength": null,
-        "dataPrecision": 8,
-        "dataScale": 2,
-        "nullable": "NO"
-      }
+      "required": true
     },
-    "qty": {
+    "stock": {
       "type": "number",
-      "required": true,
-      "default": 0,
-      "postgresql": {
-        "columnName": "qty",
-        "dataType": "integer",
-        "dataLength": null,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "NO"
-      }
+      "required": true
     },
     "discount_type": {
-      "type": "string",
-      "default": "nominal",
-      "postgresql": {
-        "columnName": "discount_type",
-        "dataType": "character varying",
-        "dataLength": 100,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "type": "string"
     },
     "discount_value": {
-      "type": "number",
-      "default": 0,
-      "postgresql": {
-        "columnName": "discount_value",
-        "dataType": "numeric",
-        "dataLength": null,
-        "dataPrecision": 8,
-        "dataScale": 2,
-        "nullable": "YES"
-      }
+      "type": "number"
     },
     "category": {
       "type": "string",
       "required": true,
-      "default": "alacarte",
-      "postgresql": {
-        "columnName": "category",
-        "dataType": "character varying",
-        "dataLength": 100,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "NO"
-      }
+      "default": "alacarte"
     },
     "created_by": {
       "type": "number",
-      "default": 1,
-      "postgresql": {
-        "columnName": "created_by",
-        "dataType": "integer",
-        "dataLength": null,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "default": 1
     },
     "updated_by": {
       "type": "number",
-      "default": 1,
-      "postgresql": {
-        "columnName": "updated_by",
-        "dataType": "integer",
-        "dataLength": null,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "default": 1
     },
     "created_at": {
       "type": "Date",
-      "defaultFn": "now",
-      "postgresql": {
-        "columnName": "created_at",
-        "dataType": "timestamp",
-        "dataLength": null,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "defaultFn": "now"
     },
     "updated_at": {
       "type": "Date",
-      "defaultFn": "now",
-      "postgresql": {
-        "columnName": "updated_at",
-        "dataType": "timestamp",
-        "dataLength": null,
-        "dataPrecision": null,
-        "dataScale": null,
-        "nullable": "YES"
-      }
+      "defaultFn": "now"
     }
   },
   "validations": [],

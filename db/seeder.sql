@@ -1,3 +1,4 @@
+-- Extentions for password
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Insert dummy data for users
@@ -11,36 +12,8 @@ VALUES
   ('customer', 'Mr Customer', 'male', 'customer@restaurant.com', 'customer', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/placeholder.jpg?alt=media&token=d84bb011-3d31-426b-870f-34812515a394', crypt('password', gen_salt('bf', 10)));
 
 -- Insert dummy data for restaurants
-INSERT INTO restaurants (
-  name,
-  description,
-  picture,
-  email,
-  website,
-  location,
-  google_maps_link,
-  instagram_link,
-  tiktok_link,
-  facebook_link,
-  twitter_link,
-  created_by,
-  updated_by
-)
-VALUES (
-  'Restaurant Nusantara',
-  'Welcome to Restaurant Nusantara, Looking for amazing food.',
-  'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9',
-  'info@restaurantnusantara.com',
-  'https://www.restaurantnusantara.com',
-  'Jl. Sudirman No. 123, South Jakarta',
-  'https://www.google.com/maps/place/Restaurant+AYCE',
-  'https://www.instagram.com/restaurantnusantara',
-  'https://www.tiktok.com/@restaurantnusantara',
-  'https://www.facebook.com/restaurantnusantara',
-  'https://twitter.com/restaurantnusantara',
-  1,
-  1
-);
+INSERT INTO restaurants (name, description, picture, email, website, location, google_maps_link, instagram_link, tiktok_link, facebook_link, twitter_link)
+VALUES ('Restaurant Nusantara', 'Welcome to Restaurant Nusantara, Looking for amazing food.', 'https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/place-holder-package.jpg?alt=media&token=8d71eed8-02c5-4e9e-8214-6766c9870ec9', 'info@restaurantnusantara.com', 'https://www.restaurantnusantara.com', 'Jl. Sudirman No. 123, South Jakarta', 'https://www.google.com/maps/place/Restaurant+AYCE', 'https://www.instagram.com/restaurantnusantara', 'https://www.tiktok.com/@restaurantnusantara', 'https://www.facebook.com/restaurantnusantara', 'https://twitter.com/restaurantnusantara');
 
 -- Insert dummy data for menu_items
 INSERT INTO menu_items (name, description, price, stock, discount_type, category, picture)

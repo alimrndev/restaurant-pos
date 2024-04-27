@@ -4,16 +4,108 @@
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "postgresql": {
+      "schema": "public",
+      "table": "order_items"
+    }
   },
   "properties": {
     "id": {
       "type": "number",
+      "required": true,
+      "unique": true
+    },
+    "order_id": {
+      "type": "number",
       "required": true
+    },
+    "order_date": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "menu_item_id": {
+      "type": "number",
+      "required": true
+    },
+    "order_note": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number",
+      "required": true
+    },
+    "qty": {
+      "type": "number",
+      "required": true
+    },
+    "discount_type": {
+      "type": "string",
+      "default": "nominal"
+    },
+    "discount_value": {
+      "type": "number",
+      "default": 0
+    },
+    "subtotal": {
+      "type": "number",
+      "required": true
+    },
+    "item_status": {
+      "type": "string",
+      "default": "waiting-payment"
+    },
+    "cashier_id": {
+      "type": "number",
+      "default": 3
+    },
+    "payment_date": {
+      "type": "date"
+    },
+    "chef_id": {
+      "type": "number",
+      "default": 4
+    },
+    "progress_date": {
+      "type": "date"
+    },
+    "waiter_id": {
+      "type": "number",
+      "default": 5
+    },
+    "completed_date": {
+      "type": "date"
+    },
+    "created_by": {
+      "type": "number",
+      "default": 1
+    },
+    "updated_by": {
+      "type": "number",
+      "default": 1
+    },
+    "created_at": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "updated_at": {
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "order": {
+      "type": "belongsTo",
+      "model": "Order",
+      "foreignKey": "order_id"
+    },
+    "menu_item": {
+      "type": "belongsTo",
+      "model": "MenuItem",
+      "foreignKey": "menu_item_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }
