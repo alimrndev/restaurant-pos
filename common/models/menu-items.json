@@ -10,11 +10,6 @@
     }
   },
   "properties": {
-    "id": {
-      "type": "number",
-      "required": true,
-      "unique": true
-    },
     "name": {
       "type": "string",
       "required": true,
@@ -64,6 +59,13 @@
   },
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }
