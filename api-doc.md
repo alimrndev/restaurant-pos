@@ -14,6 +14,7 @@
     body:
     {
         "username": "string",
+        "password": "string",
         "email": "string",
         "fullname": "string",
         "role": "customer",
@@ -41,6 +42,7 @@
     body:
     {
         "username": "string",
+        "password": "string",
         "email": "string",
         "fullname": "string",
         "role": "customer",
@@ -58,6 +60,7 @@
     body:
     {
         "username": "string",
+        "password": "string",
         "email": "string",
         "fullname": "string",
         "role": "customer",
