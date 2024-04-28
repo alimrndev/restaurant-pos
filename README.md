@@ -87,15 +87,14 @@ docker compose up --build -d
 
 
 # Documentation
-# Page Documentation:
-- [Page - Restaurant](https://github.com/alimrndev/restaurant-pos/page-doc.md)
+### Page Documentation:
+- [Restaurant - Page](https://github.com/alimrndev/restaurant-pos/blob/main/page-doc.md)
 
-# API Documentation:
-- [REST API - Restaurant](https://github.com/alimrndev/restaurant-pos/api-doc.md)
+### API Documentation:
+- [Restaurant - REST API](https://github.com/alimrndev/restaurant-pos/blob/main/api-doc.md)
 
-# Database Documentation:
-- [Database Schema](https://github.com/alimrndev/restaurant-pos/db-schema-doc.md)
-
+### Database Documentation:
+- [Restaurant - Database Schema](https://github.com/alimrndev/restaurant-pos/blob/main/db-schema-doc.md)
 
 
 # License
