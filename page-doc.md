@@ -19,3 +19,13 @@
 
 ## User Page
 ![user](https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/User%20Page.png?alt=media&token=a4fac8b9-ef9a-4a29-bd75-9246801c130b)
+
+# Documentation
+### Page Documentation:
+- [Restaurant - Page](https://github.com/alimrndev/restaurant-pos/blob/main/page-doc.md)
+
+### API Documentation:
+- [Restaurant - REST API](https://github.com/alimrndev/restaurant-pos/blob/main/api-doc.md)
+
+### Database Documentation:
+- [Restaurant - Database Schema](https://github.com/alimrndev/restaurant-pos/blob/main/db-schema-doc.md)
