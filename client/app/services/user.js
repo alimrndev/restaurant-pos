@@ -25,7 +25,7 @@ export default class UserService extends Service {
       }
 
       console.log('API createUser successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -99,7 +99,7 @@ export default class UserService extends Service {
       }
 
       console.log('API updateUser successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -125,7 +125,7 @@ export default class UserService extends Service {
       }
 
       console.log('API patchUser successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -150,7 +150,7 @@ export default class UserService extends Service {
       }
 
       console.log('API deleteUser successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);

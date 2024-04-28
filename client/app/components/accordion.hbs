@@ -7,7 +7,7 @@
                     <div class="d-flex w-100 justify-content-between ms-3 me-3">
                         <section class="mb-1">
                             <section class="mb-3">{{@orderList.order_number}}</section>
-                            <section>Qty {{@orderList.qty}} | Total Price: Rp {{@orderList.subtotal_price}}</section>
+                            <section>Qty {{@orderList.qty}} | Total Price: Rp {{currency @orderList.subtotal_price}}</section>
                         </section>
                         <section class="text-dark font-weight-bold">
                             <section class="mb-3 text-center"><small>{{this.orderDate}}</small></section>

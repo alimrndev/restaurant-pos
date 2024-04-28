@@ -43,19 +43,7 @@ export default class NavbarBottomComponent extends Component {
       tax_price: this.cart.tax,
       total_price: this.cart.total
     }
-    const newOrder = this.order.createOrder(payload);
-
-    this.cart.itemList.forEach(item => {
-      const payload = {
-        order_id: 1,
-        menu_item_id: parseInt(item.id),
-        qty: parseInt(item.count),
-        price: parseInt(item.price),
-        subtotal: parseInt(item.subtotal),
-        item_status: orderStatus
-      };
-      this.order.createOrderItems(payload);
-    });
+    this.order.createOrder(payload);
 
     return;
   }

@@ -25,7 +25,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API createMenu successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -99,7 +99,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API updateMenu successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -125,7 +125,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API patchMenu successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -150,7 +150,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API deleteMenu successful!');
-      console.log(await response.json());
+      
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);

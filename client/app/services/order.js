@@ -5,6 +5,8 @@ import { inject as service } from '@ember/service';
 
 export default class OrderService extends Service {
   @service('menu') menu;
+  @service('cart') cart;
+  @service('user') user;
   @tracked data = {};
   @tracked datas = [];
 
@@ -107,9 +109,37 @@ export default class OrderService extends Service {
         throw new Error(`API failed with status ${response.status}`);
       }
 
-      console.log('API createOrder successful!');
+      
       const newOrder = await response.json();
-      return newOrder;
+      this.data = newOrder;
+
+      this.cart.itemList.forEach(item => {
+        const payload = {
+          order_id: this.data.id,
+          menu_item_id: parseInt(item.id),
+          qty: parseInt(item.count),
+          price: parseInt(item.price),
+          subtotal: parseInt(item.subtotal),
+          item_status: "waiting-payment"
+        };
+        this.createOrderItems(payload);
+
+        const currentStock = item.stock - item.count;
+        const payloadMenu = {
+          stock: currentStock
+        };
+        this.menu.patchMenu(item.id, payloadMenu);
+      });
+      this.cart.itemList = [];
+
+      const payloadOrderStates = {
+        order_id: this.data.id,
+        order_status: "waiting-payment"
+      };
+      this.createOrderStates(payloadOrderStates);
+
+      console.log('API createOrder successful!');
+      return this.data;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -118,7 +148,7 @@ export default class OrderService extends Service {
   async createOrderItems(data) {
     const apiURL = ENV.apiURL;
     const url = `${apiURL}/order_items`;
-    console.log('Start Fetching API createOrder:', url);
+    console.log('Start Fetching API createOrderItems:', url);
 
     try {
       const response = await fetch(url, {
@@ -133,9 +163,35 @@ export default class OrderService extends Service {
         throw new Error(`API failed with status ${response.status}`);
       }
 
-      console.log('API createOrder successful!');
-      const newOrderItems = await response.json();
-      return newOrderItems;
+      console.log('API createOrderItems successful!');
+      const resp = await response.json();
+      return resp;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  async createOrderStates(data) {
+    const apiURL = ENV.apiURL;
+    const url = `${apiURL}/order_states`;
+    console.log('Start Fetching API createOrderStates:', url);
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API failed with status ${response.status}`);
+      }
+
+      console.log('API createOrderStates successful!');
+      const resp = await response.json();
+      return resp;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
