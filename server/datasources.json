@@ -5,7 +5,7 @@
   },
   "postgreDs": {
     "host": "localhost",
-    "port": 5435,
+    "port": 5432,
     "url": "",
     "database": "db_restaurant",
     "password": "password",
