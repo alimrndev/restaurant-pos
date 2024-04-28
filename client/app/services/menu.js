@@ -1,14 +1,21 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ENV from '../config/environment';
+import { inject as service } from '@ember/service';
 
 export default class MenuService extends Service {
+  @service('session') session;
+  @service('cart') cart;
+  @service('user') user;
+  @service('order') order;
+
   @tracked data = {};
   @tracked datas = [];
 
   async createMenu(data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menu_items`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/menu_items?access_token=${token}`;
     console.log('Start Fetching API createMenu:', url);
 
     try {
@@ -25,7 +32,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API createMenu successful!');
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -34,7 +41,8 @@ export default class MenuService extends Service {
 
   async getAllMenu() {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menu_items`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/menu_items?access_token=${token}`;
     console.log('Start Fetching API getAllMenu:', url);
 
     try {
@@ -58,7 +66,8 @@ export default class MenuService extends Service {
 
   async getOneMenu(id) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menu_items/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/menu_items/${id}?access_token=${token}`;
     console.log('Start Fetching API getOneMenu:', url);
 
     try {
@@ -82,7 +91,8 @@ export default class MenuService extends Service {
 
   async updateMenu(id, data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menu_items/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/menu_items/${id}?access_token=${token}`;
     console.log('Start Fetching API updateMenu:', url);
 
     try {
@@ -99,7 +109,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API updateMenu successful!');
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -108,7 +118,8 @@ export default class MenuService extends Service {
 
   async patchMenu(id, data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menu_items/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/menu_items/${id}?access_token=${token}`;
     console.log('Start Fetching API patchMenu:', url);
 
     try {
@@ -125,7 +136,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API patchMenu successful!');
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -134,7 +145,8 @@ export default class MenuService extends Service {
 
   async deleteMenu(id) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/menu_items/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/menu_items/${id}?access_token=${token}`;
     console.log('Start Fetching API deleteMenu:', url);
 
     try {
@@ -150,7 +162,7 @@ export default class MenuService extends Service {
       }
 
       console.log('API deleteMenu successful!');
-      
+
       return await response.json();
     } catch (error) {
       console.error('Error fetching data:', error);

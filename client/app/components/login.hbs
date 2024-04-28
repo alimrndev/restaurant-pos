@@ -4,12 +4,12 @@
     <form class="login-form">
       <div class="form-group" style="border-radius: 5px;">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter your username" required style="border-radius: 5px;">
+        <input type="text" class="form-control" {{on "input" this.onInputUsername}} id="username" placeholder="Enter your username" required style="border-radius: 5px;">
       </div>
       <div class="form-group" style="border-radius: 5px;">
         <label for="password">Password</label>
         <div class="input-group" style="border-radius: 5px;">
-          <input type="password" class="form-control" id="password" placeholder="Enter your password" required style="border-radius: 5px;">
+          <input type="password" class="form-control" {{on "input" this.onInputPassword}} id="password" placeholder="Enter your password" required style="border-radius: 5px;">
           <div class="input-group-append">
             <button class="btn btn-sm btn-outline-secondary" type="button" id="togglePassword" title="Show Password" style="border-radius: 5px;">
               <span class="fa fa-eye" style="border-radius: 5px;"></span>
@@ -17,13 +17,37 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary login-button" style="border-radius: 5px;">Login</button>
+      <LinkTo @route="index">
+      <button type="submit" class="btn btn-primary login-button" {{on "click" this.submitLogin}} style="border-radius: 5px;">Login</button>
+      </LinkTo>
       <div class="login-links">
         <p>Don't have an account yet? <LinkTo @route="register" class="create-account">Register now</LinkTo></p>
       </div>
     </form>
   </div>
 </div>
+
+{{#if this.isRequestError}}
+{{!-- Modal Confirmation --}}
+<div class="modal" id="confirmationModal" style="display: block; backdrop-filter: blur(5px);" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Message Error</h5>
+        <button type="button" class="btn-close" {{on "click" this.hideModalRequestError}} data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><h3>Error 404!</h3> <br> Username and Password Invalid!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" {{on "click" this.hideModalRequestError}} data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
 
 <script>
   document.getElementById('togglePassword').addEventListener('click', function (e) {

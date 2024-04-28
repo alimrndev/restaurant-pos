@@ -7,6 +7,7 @@ export default class NavbarBottomComponent extends Component {
   @service('cart') cart;
   @service('order') order;
   @service('menu') menu;
+  @service('session') session;
   @tracked display = 'none';
   @tracked newOrder = {};
 
@@ -22,7 +23,7 @@ export default class NavbarBottomComponent extends Component {
 
   @action
   createNewOrder() {
-    const customerId = 6;
+    const customerId = this.session.dataLogin.userId;
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -31,7 +32,7 @@ export default class NavbarBottomComponent extends Component {
     const minutes = String(currentDate.getMinutes()).padStart(2, '0');
     const seconds = String(currentDate.getSeconds()).padStart(2, '0');
     const orderNumber = `ORD-${customerId}${year}${month}${day}${hours}${minutes}${seconds}`;
-    const orderStatus = "waiting-payment";
+    const orderStatus = 'waiting-payment';
 
     const payload = {
       customer_id: customerId,
@@ -41,8 +42,8 @@ export default class NavbarBottomComponent extends Component {
       subtotal_price: this.cart.subtotal,
       tax_percentage: this.cart.tax_percentage,
       tax_price: this.cart.tax,
-      total_price: this.cart.total
-    }
+      total_price: this.cart.total,
+    };
     this.order.createOrder(payload);
 
     return;

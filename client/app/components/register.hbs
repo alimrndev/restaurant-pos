@@ -3,21 +3,21 @@
     <p class="login-title text-center">Register</p>
     <form class="login-form" style="border-radius: 10px;">
       <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" {{on "input" this.onInputUsername}} id="username" placeholder="Enter your username" required style="border-radius: 5px;">
+      </div>
+      <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter your email" required style="border-radius: 5px;">
+        <input type="email" class="form-control" {{on "input" this.onInputEmail}} id="email" placeholder="Enter your email" required style="border-radius: 5px;">
       </div>
       <div class="form-group">
         <label for="fullname">Fullname</label>
-        <input type="text" class="form-control" id="fullname" placeholder="Enter your fullname" required style="border-radius: 5px;">
-      </div>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter your username" required style="border-radius: 5px;">
+        <input type="text" class="form-control" {{on "input" this.onInputFullname}} id="fullname" placeholder="Enter your fullname" required style="border-radius: 5px;">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <div class="input-group" style="border-radius: 10px;">
-          <input type="password" class="form-control" id="password" placeholder="Enter your password" required style="border-radius: 5px;">
+          <input type="password" class="form-control" {{on "input" this.onInputPassword}} id="password" placeholder="Enter your password" required style="border-radius: 5px;">
           <div class="input-group-append">
             <button class="btn btn-sm btn-outline-secondary" type="button" id="togglePassword" title="Show Password" style="border-radius: 5px;">
               <span class="fa fa-eye" style="border-radius: 5px;"></span>
@@ -25,13 +25,83 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary login-button" style="border-radius: 5px;">Register</button>
+      <button type="button" class="btn btn-primary login-button" {{on "click" this.submitRegister}} style="border-radius: 5px;">Register</button>
       <div class="login-links">
         <p>Already have an account? <LinkTo @route="login" class="create-account">Login Now</LinkTo></p>
       </div>
     </form>
   </div>
 </div>
+
+
+{{#if this.session.isRegister}}
+{{!-- Modal Confirmation --}}
+<div class="modal" id="confirmationModal" style="display: block; backdrop-filter: blur(5px);" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Message Success</h5>
+        <button type="button" class="btn-close" {{on "click" this.hideModal}} data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <section>Congratulation</section>
+        <section>Register Success!</section>
+      </div>
+      <div class="modal-footer">
+        <LinkTo @route="login">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{#if this.session.isError}}
+{{!-- Modal Confirmation --}}
+<div class="modal" id="confirmationModal" style="display: block; backdrop-filter: blur(5px);" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Message Error</h5>
+        <button type="button" class="btn-close" {{on "click" this.hideModalError}} data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><h3>Error 404!</h3> <br> Username and Email already used!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" {{on "click" this.hideModalError}} data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+{{#if this.isRequestError}}
+{{!-- Modal Confirmation --}}
+<div class="modal" id="confirmationModal" style="display: block; backdrop-filter: blur(5px);" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title">Message Error</h5>
+        <button type="button" class="btn-close" {{on "click" this.hideModalRequestError}} data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><h3>Error 404!</h3> <br> Username, Password, Email and Fullname are Required!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" {{on "click" this.hideModalRequestError}} data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
 
 <script>
   document.getElementById('togglePassword').addEventListener('click', function (e) {

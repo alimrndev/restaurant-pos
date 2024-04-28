@@ -9,7 +9,9 @@ export default class AccordionComponent extends Component {
   @action
   seeDetail() {
     const { orderList } = this.args;
-    const isHistoryExist = this.order.datas.some(item => item.id === orderList.id && item.history);
+    const isHistoryExist = this.order.datas.some(
+      (item) => item.id === orderList.id && item.history,
+    );
     if (!isHistoryExist) {
       this.order.getAllOrderItems(orderList.id);
     }
@@ -19,14 +21,26 @@ export default class AccordionComponent extends Component {
     const { orderList } = this.args;
     if (orderList.order_date) {
       const date = new Date(orderList.order_date);
-      const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Jakarta' };
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        timeZone: 'Asia/Jakarta',
+      };
       return date.toLocaleDateString('en-US', options);
     }
-    return "";
+    return '';
   }
   get bgColor() {
     const { orderList } = this.args;
-    if (orderList.order_status === 'pending' || orderList.order_status === 'waiting-payment') {
+    if (
+      orderList.order_status === 'pending' ||
+      orderList.order_status === 'waiting-payment'
+    ) {
       return 'danger';
     }
 
@@ -47,7 +61,10 @@ export default class AccordionComponent extends Component {
 
   get isPay() {
     const { orderList } = this.args;
-    if (orderList.order_status === 'pending' || orderList.order_status === 'waiting-payment') {
+    if (
+      orderList.order_status === 'pending' ||
+      orderList.order_status === 'waiting-payment'
+    ) {
       return true;
     }
   }

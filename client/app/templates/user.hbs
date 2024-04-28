@@ -3,12 +3,14 @@
 {{!-- Navbar Top --}}
 <Navbar @isUser="true" />
 
+{{#if this.session.isLogin }}
+
 <div class="container mt-5 mb-5">
   {{!-- Customer Info --}}
-  <Customer @fullname={{this.user.data.fullname}}/>
+  <Customer/>
 
   {{!-- Profile --}}
-  <Profile @user={{this.user.data}}/>
+  <Profile @user={{this.session.data}}/>
 
   {{!-- Offer Order Again? --}}
   {{#unless this.isEmpty }}
@@ -27,6 +29,27 @@
   <div class="spacer-bottom"></div>
 
 </div>
+
+{{else}}
+<div class="container" style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+    <div class="row text-center">
+      <div class="progress m-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+      </div>
+
+      <h3>You need Login First!</h3>
+      <LinkTo @route="login">
+        <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit">
+          <i class="fa-solid fa-utensils"></i> Login
+        </button>
+      </LinkTo>
+
+      <div class="progress m-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+      </div>
+    </div>
+</div>
+{{/if}}
 
 {{!-- Navbar Bottom --}}
 <NavbarBottom @isUser="true"/>

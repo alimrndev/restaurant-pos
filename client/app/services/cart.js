@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 class Item {
   @tracked count;
@@ -27,6 +28,11 @@ class Item {
 }
 
 export default class CartService extends Service {
+  @service('session') session;
+  @service('user') user;
+  @service('menu') menu;
+  @service('order') order;
+
   @tracked itemList = [];
   @tracked qty = 0;
   @tracked subtotal = 0;
@@ -41,7 +47,10 @@ export default class CartService extends Service {
       existingItem.count += 1;
       existingItem.subtotal = existingItem.price * existingItem.count;
       this.qty = this.itemList.reduce((total, item) => total + item.count, 0);
-      this.subtotal = this.itemList.reduce((total, item) => total + item.count * item.price, 0);
+      this.subtotal = this.itemList.reduce(
+        (total, item) => total + item.count * item.price,
+        0,
+      );
       this.tax = this.subtotal * this.tax_percentage;
       this.total = this.subtotal + this.tax;
     } else {
@@ -54,7 +63,10 @@ export default class CartService extends Service {
         }),
       ];
       this.qty = this.itemList.reduce((total, item) => total + item.count, 0);
-      this.subtotal = this.itemList.reduce((total, item) =>total + item.count * item.price, 0);
+      this.subtotal = this.itemList.reduce(
+        (total, item) => total + item.count * item.price,
+        0,
+      );
       this.tax = this.subtotal * this.tax_percentage;
       this.total = this.subtotal + this.tax;
     }
@@ -68,7 +80,10 @@ export default class CartService extends Service {
         existingItem.count -= 1;
         existingItem.subtotal = existingItem.price * existingItem.count;
         this.qty = this.itemList.reduce((total, item) => total + item.count, 0);
-        this.subtotal = this.itemList.reduce((total, item) =>total + item.count * item.price, 0);
+        this.subtotal = this.itemList.reduce(
+          (total, item) => total + item.count * item.price,
+          0,
+        );
         this.tax = this.subtotal * this.tax_percentage;
         this.total = this.subtotal + this.tax;
       } else {
@@ -76,7 +91,10 @@ export default class CartService extends Service {
           (existingItem) => existingItem.name !== item.name,
         );
         this.qty = this.itemList.reduce((total, item) => total + item.count, 0);
-        this.subtotal = this.itemList.reduce((total, item) =>total + item.count * item.price, 0);
+        this.subtotal = this.itemList.reduce(
+          (total, item) => total + item.count * item.price,
+          0,
+        );
         this.tax = this.subtotal * this.tax_percentage;
         this.total = this.subtotal + this.tax;
       }

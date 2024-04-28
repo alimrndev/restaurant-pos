@@ -4,24 +4,29 @@ import ENV from '../config/environment';
 import { inject as service } from '@ember/service';
 
 export default class OrderService extends Service {
-  @service('menu') menu;
+  @service('session') session;
   @service('cart') cart;
   @service('user') user;
+  @service('menu') menu;
+
   @tracked data = {};
   @tracked datas = [];
 
-  async getAllOrderByUserId(userId = 6) {
+  async getAllOrderByUserId(userId) {
     const apiURL = ENV.apiURL;
-    const cusomerId = userId.toString();
-    const filter = encodeURIComponent(JSON.stringify({"where":{"customer_id": {"eq": cusomerId}}}));
-    const url = `${apiURL}/orders?filter=${filter}`;
+    const token = this.session.dataLogin.id;
+    const customerId = userId.toString();
+    const filter = encodeURIComponent(
+      JSON.stringify({ where: { customer_id: { eq: customerId } } }),
+    );
+    const url = `${apiURL}/orders?filter=${filter}&access_token=${token}`;
     console.log('Start Fetching API getAllOrder:', url);
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
       });
 
       if (!response.ok) {
@@ -31,7 +36,7 @@ export default class OrderService extends Service {
       console.log('API getAllOrder successful!');
       const orders = await response.json();
       this.datas = orders;
-      orders.forEach(order => {
+      orders.forEach((order) => {
         this.getAllOrderItems(order.id);
       });
       return orders;
@@ -42,10 +47,12 @@ export default class OrderService extends Service {
 
   async getAllOrderItems(order_id) {
     const apiURL = ENV.apiURL;
+    const token = this.session.dataLogin.id;
     const orderId = order_id.toString();
-    console.log('orderId:', orderId);
-    const filter = encodeURIComponent(JSON.stringify({"where":{"order_id": {"eq": orderId}}}));
-    const url = `${apiURL}/order_items?filter=${filter}`;
+    const filter = encodeURIComponent(
+      JSON.stringify({ where: { order_id: { eq: orderId } } }),
+    );
+    const url = `${apiURL}/order_items?filter=${filter}&access_token=${token}`;
 
     console.log('Start Fetching API getAllOrderItems:', url);
     try {
@@ -53,7 +60,7 @@ export default class OrderService extends Service {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
       });
 
       if (!response.ok) {
@@ -62,23 +69,25 @@ export default class OrderService extends Service {
 
       console.log('API getAllOrderItems successful!');
       const history = await response.json();
-      const mappedHistory = history.map(item => {
+      const mappedHistory = history.map((item) => {
         const menuItemId = item.menu_item_id;
-        const menuData = this.menu.datas.find(data => data.id === menuItemId);
+        const menuData = this.menu.datas.find((data) => data.id === menuItemId);
         const menuName = menuData ? menuData.name : 'Unknown Menu';
         return {
           ...item,
-          menu_name: menuName
+          menu_name: menuName,
         };
       });
 
-      const isHistoryExist = this.datas.some(item => item.id === order_id && item.history);
+      const isHistoryExist = this.datas.some(
+        (item) => item.id === order_id && item.history,
+      );
       if (!isHistoryExist) {
-        this.datas = this.datas.map(item => {
+        this.datas = this.datas.map((item) => {
           if (item.id === order_id) {
             return {
               ...item,
-              history: mappedHistory
+              history: mappedHistory,
             };
           }
           return item;
@@ -93,7 +102,8 @@ export default class OrderService extends Service {
 
   async createOrder(data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/orders`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/orders?access_token=${token}`;
     console.log('Start Fetching API createOrder:', url);
 
     try {
@@ -109,24 +119,23 @@ export default class OrderService extends Service {
         throw new Error(`API failed with status ${response.status}`);
       }
 
-      
       const newOrder = await response.json();
       this.data = newOrder;
 
-      this.cart.itemList.forEach(item => {
+      this.cart.itemList.forEach((item) => {
         const payload = {
           order_id: this.data.id,
           menu_item_id: parseInt(item.id),
           qty: parseInt(item.count),
           price: parseInt(item.price),
           subtotal: parseInt(item.subtotal),
-          item_status: "waiting-payment"
+          item_status: 'waiting-payment',
         };
         this.createOrderItems(payload);
 
         const currentStock = item.stock - item.count;
         const payloadMenu = {
-          stock: currentStock
+          stock: currentStock,
         };
         this.menu.patchMenu(item.id, payloadMenu);
       });
@@ -134,7 +143,7 @@ export default class OrderService extends Service {
 
       const payloadOrderStates = {
         order_id: this.data.id,
-        order_status: "waiting-payment"
+        order_status: 'waiting-payment',
       };
       this.createOrderStates(payloadOrderStates);
 
@@ -147,7 +156,8 @@ export default class OrderService extends Service {
 
   async createOrderItems(data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/order_items`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/order_items?access_token=${token}`;
     console.log('Start Fetching API createOrderItems:', url);
 
     try {
@@ -173,7 +183,8 @@ export default class OrderService extends Service {
 
   async createOrderStates(data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/order_states`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/order_states?access_token=${token}`;
     console.log('Start Fetching API createOrderStates:', url);
 
     try {
@@ -199,7 +210,8 @@ export default class OrderService extends Service {
 
   async getAllOrder() {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/orders`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/orders?access_token=${token}`;
     console.log('Start Fetching API getAllOrder:', url);
 
     try {
@@ -223,7 +235,8 @@ export default class OrderService extends Service {
 
   async getOneOrder(id) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/orders/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/orders/${id}?access_token=${token}`;
     console.log('Start Fetching API getOneOrder:', url);
 
     try {
@@ -247,7 +260,8 @@ export default class OrderService extends Service {
 
   async updateOrder(id, data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/orders/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/orders/${id}?access_token=${token}`;
     console.log('Start Fetching API updateOrder:', url);
 
     try {
@@ -273,7 +287,8 @@ export default class OrderService extends Service {
 
   async patchOrder(id, data) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/orders/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/orders/${id}?access_token=${token}`;
     console.log('Start Fetching API patchOrder:', url);
 
     try {
@@ -299,7 +314,8 @@ export default class OrderService extends Service {
 
   async deleteOrder(id) {
     const apiURL = ENV.apiURL;
-    const url = `${apiURL}/orders/${id}`;
+    const token = this.session.dataLogin.id;
+    const url = `${apiURL}/orders/${id}?access_token=${token}`;
     console.log('Start Fetching API deleteOrder:', url);
 
     try {
@@ -321,5 +337,4 @@ export default class OrderService extends Service {
       console.error('Error fetching data:', error);
     }
   }
-
 }

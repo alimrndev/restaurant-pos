@@ -3,12 +3,24 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class MenuController extends Controller {
+  @service('session') session;
   @service('cart') cart;
+  @service('user') user;
   @service('menu') menu;
+  @service('order') order;
+
   @tracked category = 'all';
 
   get isEmpty() {
     if (this.cart.itemList.length) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  get isMenuEmpty() {
+    if (this.menu.datas.length > 0) {
       return false;
     } else {
       return true;
@@ -24,7 +36,7 @@ export default class MenuController extends Controller {
     );
     return filteredMenu.length > 0 ? filteredMenu : [];
   }
-  
+
   get menuPackage() {
     if (this.menu.datas.length > 0) {
       return this.menu.datas.filter((item) => item.category === 'package');

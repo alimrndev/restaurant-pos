@@ -2,10 +2,10 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default class UserRoute extends Route {
-  @service('user') user;
+  @service('session') session;
 
   async model() {
-    console.log('Init API getOneUser');
-    this.user.getOneUser(6);
+    console.log('Init API checkLogin');
+    this.session.checkLogin();
   }
 }

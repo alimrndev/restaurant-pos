@@ -2,7 +2,11 @@
 <nav class="navbar bg-light fixed-top" data-bs-theme="light" style="padding-bottom: 2px; padding-top: 2px;">
   <div class="container d-flex justify-content-between">
     <section class="d-flex align-items-center"><LinkTo @route="index"><button class="btn btn-sm btn-white" type="button"><span style="font-size: 1.2rem; color: black;"><i class="fa-solid fa-store"></i> Restaurant Nusantara</span></button></LinkTo></section>
+    {{#if this.session.isLogin}}
+    <section class="d-flex align-items-center"><LinkTo @route="user"><button class="btn btn-sm btn-white" type="button"><span style="font-size: 1.2rem; color: black;"><i class="fa-solid fa-user"></i> {{this.session.data.fullname}}</span></button></LinkTo></section>
+    {{else}}
     <section class="d-flex align-items-center"><LinkTo @route="login"><button class="btn btn-sm btn-white" type="button"><span style="font-size: 1.2rem; color: black;"><i class="fa-solid fa-user"></i> Login</span></button></LinkTo></section>
+    {{/if}}
   </div>
 </nav>
 <div class="spacer" style="margin-top: 3rem;"></div>
@@ -66,7 +70,11 @@
   <div class="container d-flex justify-content-between">
     <section class="text-center"><LinkTo @route="index"><button class="btn btn-sm btn-white" type="button"><h5 class="hover-icon"><i class="fa-solid fa-store"></i><br></h5>Home</button></LinkTo></section>
     <section><LinkTo @route="user"><button class="btn btn-sm btn-white" type="button"><h5><span class="fa-solid fa-user"></span> Profile</h5></button></LinkTo></section>
-    <section class="text-center"><LinkTo @route="menu"><button class="btn btn-sm btn-white" type="button"><h5><i class="fa-solid fa-utensils"></i><br></h5>Menu</button></LinkTo></section>
+    {{#if this.session.isLogin}}
+    <section class="text-center"><LinkTo @route="login"><button class="btn btn-sm btn-white" {{on "click" this.submitLogout}} type="button"><h5><i class="fa-solid fa-user"></i><br></h5>Logout</button></LinkTo></section>
+    {{else}}
+    <section class="text-center"><LinkTo @route="login"><button class="btn btn-sm btn-white" type="button"><h5><i class="fa-solid fa-user"></i><br></h5>Login</button></LinkTo></section>
+    {{/if}}
   </div>
 </nav>
 <div class="spacer" style="margin-top: 5rem;"></div>
