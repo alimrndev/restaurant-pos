@@ -46,10 +46,15 @@ npm install -g loopback-cli@3
    ```
 
 ## Setup Database using Docker
-3. Setup db postgresql and Build the container (if you need customize open file docker-compose.yml)
-```
-docker compose up --build -d
-```
+3. Setup db postgresql and Build the container 
+   
+    ```
+    docker compose up --build -d
+    ```
+    (if you need customize open file docker-compose.yml)
+    ```bash
+    Path File /docker-compose.yml
+    ```
 
 ## Backend Install and Start
 4. Install Backend dependencies:
@@ -58,26 +63,66 @@ docker compose up --build -d
    npm install
    ```
 
-5. Start Backend:
+5. Customize datasource and model-config to your DB Postgresql Connection String:
+   
+   Customize datasource to your db connection string:
+     ```bash
+     Path File /server/datasource.json
+
+     "postgreDs": {
+        "host": "localhost",
+        "port": 5435,
+        "url": "",
+        "database": "db_restaurant",
+        "password": "password",
+        "name": "postgreDs",
+        "user": "user_restaurant",
+        "connector": "postgresql",
+        "min": 5,
+        "max": 200,
+        "idleTimeoutMillis": 60000,
+        "ssl": false
+      }
+     ```
+   Customize model-config to your own datasource (postgreDS):
+     ```bash
+     Path File /server/model-config.json
+     
+     Example Change to your Data Source:
+     
+     (Before)
+     "users": {
+        "dataSource": "db",
+        "public": true
+      },
+
+     (After)
+     "users": {
+        "dataSource": "postgreDs",
+        "public": true
+      },
+     ```
+   
+7. Start Backend:
 
    ```bash
    npm start
    ```
 
 ## Frontend Install and Start
-6. Move to the Frontend directory
+7. Move to the Frontend directory
 
    ```bash
    cd client
    ```
    
-7. Install Frontend dependencies:
+8. Install Frontend dependencies:
 
    ```bash
    npm install
    ```
 
-8. Start Frontend:
+9. Start Frontend:
 
    ```bash
    npm start
