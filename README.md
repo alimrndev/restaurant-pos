@@ -103,7 +103,7 @@ npm install -g loopback-cli@3
       },
      ```
    
-7. Start Backend:
+6. Start Backend:
 
    ```bash
    npm start
