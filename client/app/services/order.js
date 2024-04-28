@@ -108,8 +108,34 @@ export default class OrderService extends Service {
       }
 
       console.log('API createOrder successful!');
-      console.log(await response.json());
-      return await response.json();
+      const newOrder = await response.json();
+      return newOrder;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  async createOrderItems(data) {
+    const apiURL = ENV.apiURL;
+    const url = `${apiURL}/order_items`;
+    console.log('Start Fetching API createOrder:', url);
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API failed with status ${response.status}`);
+      }
+
+      console.log('API createOrder successful!');
+      const newOrderItems = await response.json();
+      return newOrderItems;
     } catch (error) {
       console.error('Error fetching data:', error);
     }

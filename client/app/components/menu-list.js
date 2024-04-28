@@ -7,30 +7,37 @@ export default class MenuListComponent extends Component {
 
   @action
   addToCart() {
-    const { id, name, description, picture, price } = this.args;
-    this.cart.addItem({
-      id,
-      name,
-      description,
-      picture,
-      price,
-    });
+    const { menu } = this.args;
+    const { id, name, description, picture, price, stock } = menu;
+    if (this.qtyCount < stock) {
+      this.cart.addItem({
+        id,
+        name,
+        description,
+        picture,
+        price,
+        stock,
+      });
+    }
   }
 
   @action
   subToCart() {
-    const { id, name, description, picture, price } = this.args;
+    const { menu } = this.args;
+    const { id, name, description, picture, price, stock } = menu;
     this.cart.subItem({
       id,
       name,
       description,
       picture,
       price,
+      stock,
     });
   }
 
   get qtyCount() {
-    const { id } = this.args;
+    const { menu } = this.args;
+    const { id } = menu;
     const item = this.cart.itemList.filter((item) => item.id === id);
     if (item.length) {
       return item[0].count;
@@ -47,6 +54,14 @@ export default class MenuListComponent extends Component {
 
   get isQtyZero() {
     if (this.qtyCount === 0) {
+      return true;
+    }
+  }
+
+  get isStockEmpty() {
+    const { menu } = this.args;
+    const { stock } = menu;
+    if (this.qtyCount >= stock) {
       return true;
     }
   }

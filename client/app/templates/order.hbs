@@ -31,12 +31,7 @@
     <div class="list-group">
       {{#each this.cart.itemList as |item|}}
         <MenuList 
-          @id={{item.id}}
-          @picture={{item.picture}}
-          @name={{item.name}}
-          @description={{item.description}}
-          @price={{item.price}}
-          @qty={{item.count}}
+          @menu={{item}}
         />
       {{/each}}
     </div> 
@@ -66,8 +61,4 @@
 {{!-- Navbar Bottom --}}
 <NavbarBottom 
   @isOrder="true"
-  @qty={{this.qty}} 
-  @subtotal={{this.subtotal}} 
-  @tax={{this.tax}} 
-  @total={{this.total}} 
 />

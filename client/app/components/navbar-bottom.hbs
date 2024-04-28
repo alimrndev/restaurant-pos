@@ -13,8 +13,8 @@
 {{!-- Mode Web Tablet - Item List --}}
 <nav class="navbar bg-light mode-web-tablet fixed-bottom" data-bs-theme="light" style="padding-bottom: 10px; padding-top: 15px;">
   <div class="container text-center">
-    <section>Qty<br><h3>{{@qty}}</h3></section>
-    <section>Subtotal<br><h3>Rp {{currency @subtotal}}</h3></section>
+    <section>Qty<br><h3>{{this.cart.qty}}</h3></section>
+    <section>Subtotal<br><h3>Rp {{currency this.cart.subtotal}}</h3></section>
     <LinkTo @route="order">
       <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit"><i class="fa-solid fa-cart-shopping" ></i> Order Now</button>
     </LinkTo>
@@ -29,8 +29,8 @@
       <div class="d-grid gap-2">
         <button class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit">
           <div class="row text-center">
-            <section class="col-2"><small>Qty</small><br>{{@qty}}</section>
-            <section class="col-5"><small>Subtotal<br> Rp</small> {{currency @subtotal}}</section>
+            <section class="col-2"><small>Qty</small><br>{{this.cart.qty}}</section>
+            <section class="col-5"><small>Subtotal<br> Rp</small> {{currency this.cart.subtotal}}</section>
             <section class="col-5 align-self-center"><i class="fa-solid fa-cart-shopping"></i> Order Now</section>
           </div>
         </button>
@@ -47,10 +47,10 @@
 {{!-- Web Tablet Mode --}}
 <nav class="navbar bg-light mode-web-tablet fixed-bottom" data-bs-theme="light"  style="padding-bottom: 10px; padding-top: 15px;">
   <div class="container text-center">
-    <section>Qty<br><h6>{{@qty}}</h6></section>
-    <section>Subtotal<br><h6>Rp {{currency @subtotal}}</h6></section>
-    <section>Tax<br><h6>Rp {{currency @tax}}</h6></section>
-    <section>Total Price<br><h3>Rp {{currency @total}}</h3></section>
+    <section>Qty<br><h6>{{this.cart.qty}}</h6></section>
+    <section>Subtotal<br><h6>Rp {{currency this.cart.subtotal}}</h6></section>
+    <section>Tax<br><h6>Rp {{currency this.cart.tax}}</h6></section>
+    <section>Total Price<br><h3>Rp {{currency this.cart.total}}</h3></section>
     {{!-- <LinkTo @route="invoice"> --}}
       <button class="btn btn-primary fa-beat" {{on "click" this.showModal}} style="--fa-beat-scale: 1.2; --fa-animation-duration: 3s;" type="submit" data-toggle="modal" data-target="#confirmationModal">
         <i class="fa-solid fa-money-bill-wave" ></i>
@@ -65,14 +65,14 @@
 <div class="card bg-light mode-mobile fixed-bottom" style="padding-top: 2px; padding-bottom: 2px;">
   <div class="container-fluid">
     <div class="row mb-2">
-      <section class="col-6 text-center"><small>Subtotal</small><br>Rp {{currency @subtotal}}</section>
-      <section class="col-6 text-center"><small>Tax</small><br>Rp {{currency @tax}}</section>
+      <section class="col-6 text-center"><small>Subtotal</small><br>Rp {{currency this.cart.subtotal}}</section>
+      <section class="col-6 text-center"><small>Tax</small><br>Rp {{currency this.cart.tax}}</section>
     </div>
       <div class="d-grid gap-2">
         <button class="btn btn-primary fa-beat"  {{on "click" this.showModal}} style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;" type="submit"  data-toggle="modal" data-target="#confirmationModal">
           <div class="row">
-            <section class="col-4 text-center"><small>Qty</small><br>{{@qty}}</section>
-            <section class="col-4 text-center"><small>Total Price<br> Rp</small> {{currency @total}}</section>
+            <section class="col-4 text-center"><small>Qty</small><br>{{this.cart.qty}}</section>
+            <section class="col-4 text-center"><small>Total Price<br> Rp</small> {{currency this.cart.total}}</section>
             <section class="col-4 align-self-center">
               <i class="fa-solid fa-money-bill-wave" ></i>
               Pay Now
@@ -102,14 +102,12 @@
           <section class="col-12 text-center mt-3">Total Price</section>
         </div>
         <div class="row">
-          <section class="col-12 text-center"><h5>Rp {{currency @total}}</h5></section>
+          <section class="col-12 text-center"><h5>Rp {{currency this.cart.total}}</h5></section>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" {{on "click" this.hideModal}} data-bs-dismiss="modal">Close</button>
-        <LinkTo @route="history">
-          <button type="button" class="btn btn-primary fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;">Proceed Payment</button>
-        </LinkTo>
+        <button type="button" class="btn btn-primary fa-beat" {{on "click" this.createNewOrder}} style="--fa-beat-scale: 1.1; --fa-animation-duration: 3s;">Proceed Payment</button>
       </div>
     </div>
   </div>

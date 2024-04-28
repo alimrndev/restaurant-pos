@@ -21,12 +21,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Package">
               {{#each this.menuPackage as |menu|}}
                 <MenuCard
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
-                @qty={{menu.count}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -35,11 +30,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Package">
               {{#each this.menuPackage as |menu|}}
                 <MenuList
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -64,12 +55,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Foods">
               {{#each this.menuFoods as |menu|}}
                 <MenuCard
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
-                @qty={{menu.count}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -78,11 +64,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Foods">
               {{#each this.menuFoods as |menu|}}
                 <MenuList
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -107,12 +89,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Drinks">
               {{#each this.menuDrinks as |menu|}}
                 <MenuCard
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
-                @qty={{menu.count}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -121,11 +98,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Drinks">
               {{#each this.menuDrinks as |menu|}}
                 <MenuList
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -150,12 +123,7 @@
             <div class="card-group align-items-center mode-web-tablet" style="grid-gap: 10px;" id="Alacarte">
               {{#each this.menuAlacarte as |menu|}}
                 <MenuCard
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
-                @qty={{menu.count}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -164,11 +132,7 @@
             <div class="list-group mode-mobile align-items-center" style="grid-gap: 10px;" id="Alacarte">
               {{#each this.menuAlacarte as |menu|}}
                 <MenuList
-                @id={{menu.id}}
-                @picture={{menu.picture}}
-                @name={{menu.name}}
-                @description={{menu.description}}
-                @price={{menu.price}}
+                @menu={{menu}}
                 />
               {{/each}}
             </div>
@@ -188,6 +152,4 @@
 {{!-- Navbar Bottom --}}
 <NavbarBottom 
   @isMenu="true"
-  @qty={{this.qty}} 
-  @subtotal={{this.subtotal}} 
 />

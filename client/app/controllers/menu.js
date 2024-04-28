@@ -7,26 +7,6 @@ export default class MenuController extends Controller {
   @service('menu') menu;
   @tracked category = 'all';
 
-  get qty() {
-    return this.cart.itemList.reduce((acc, item) => {
-      return acc + item.count;
-    }, 0);
-  }
-
-  get subtotal() {
-    return this.cart.itemList.reduce((acc, item) => {
-      return acc + item.price * item.count;
-    }, 0);
-  }
-
-  get tax() {
-    return 0.11 * this.subtotal;
-  }
-
-  get total() {
-    return this.subtotal + this.tax;
-  }
-
   get isEmpty() {
     if (this.cart.itemList.length) {
       return false;
@@ -44,6 +24,7 @@ export default class MenuController extends Controller {
     );
     return filteredMenu.length > 0 ? filteredMenu : [];
   }
+  
   get menuPackage() {
     if (this.menu.datas.length > 0) {
       return this.menu.datas.filter((item) => item.category === 'package');

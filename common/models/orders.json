@@ -39,7 +39,7 @@
     "order_status": {
       "type": "string",
       "required": true,
-      "default": "pending"
+      "default": "waiting-payment"
     },
     "qty": {
       "type": "number",

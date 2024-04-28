@@ -19,7 +19,7 @@ export default class AccordionComponent extends Component {
     const { orderList } = this.args;
     if (orderList.order_date) {
       const date = new Date(orderList.order_date);
-      const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+      const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
       return date.toLocaleDateString('en-US', options);
     }
     return "";
