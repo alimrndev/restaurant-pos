@@ -85,10 +85,17 @@ docker compose up --build -d
 
    See your restaurant landingpage at http://localhost:4200/
 
-# Database:
-- **Database System:** PostgreSQL
-- **Database Schema:**
-  ![db-schema](https://firebasestorage.googleapis.com/v0/b/restaurant-ordering-syst-2b90a.appspot.com/o/DB%20Restaurant%20Ordering%20Diagram%20New.png?alt=media&token=29a898b8-2cad-49ea-b60e-7186b73e38e3)
+
+# Documentation
+# Page Documentation:
+- [Page - Restaurant](https://github.com/alimrndev/restaurant-pos/page-doc.md)
+
+# API Documentation:
+- [REST API - Restaurant](https://github.com/alimrndev/restaurant-pos/api-doc.md)
+
+# Database Documentation:
+- [Database Schema](https://github.com/alimrndev/restaurant-pos/db-schema-doc.md)
+
 
 
 # License
